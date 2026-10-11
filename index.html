@@ -100,11 +100,12 @@ const dig=n=>`<b class="dg">${n}</b>${dots(n)}`;
 const cir=i=>`<div class="cir" style="background:${COL[i][1]}"></div>`;
 const rep=(e,n)=>e.repeat(n);
 let sound=true,run=0;
-function speak(t,end){
+const EN={jeden:'one',dwa:'two',trzy:'three',cztery:'four',pięć:'five',sześć:'six',siedem:'seven',osiem:'eight',dziewięć:'nine',dziesięć:'ten',czerwony:'red',niebieski:'blue',żółty:'yellow',zielony:'green',pomarańczowy:'orange',fioletowy:'purple',różowy:'pink',biały:'white',pies:'dog',kot:'cat',królik:'rabbit',krowa:'cow',kura:'hen',świnka:'pig',żaba:'frog',koń:'horse',owca:'sheep',kaczka:'duck'};
+function speak(t,lang='pl-PL',end){
  if(window.speechSynthesis)speechSynthesis.cancel();
  if(!sound||!window.speechSynthesis){end&&setTimeout(end,500);return}
- const u=new SpeechSynthesisUtterance(t);u.lang='pl-PL';u.rate=.85;u.pitch=1.1;
- const v=speechSynthesis.getVoices().find(a=>a.lang.startsWith('pl'));if(v)u.voice=v;
+ const u=new SpeechSynthesisUtterance(t);u.lang=lang;u.rate=lang=='pl-PL'?.85:.75;u.pitch=1.1;
+ const vs=speechSynthesis.getVoices(),p=lang.slice(0,2),v=vs.find(a=>a.lang===lang)||vs.find(a=>a.lang.startsWith(p));if(v)u.voice=v;
  if(end){let f=0;const d=()=>{if(!f){f=1;end()}};u.onend=u.onerror=d;setTimeout(d,5000)}
  speechSynthesis.speak(u)}
 /* ---- task generators ---- */
@@ -150,7 +151,9 @@ function choose(j,b){
  if(lock)return;const t=T[i];
  if(j===t.c){lock=1;b.classList.add('good');[...$('ans').children].forEach(e=>e.disabled=true);ok(t.s[j]);setTimeout(next,1700)}
  else{mist++;b.classList.add('bad','shake');b.disabled=true;oops()}}
-function ok(w){const f=$('fb');f.className='fb';f.textContent=['Brawo!','Super!','Świetnie!','Tak jest!'][Math.random()*4|0]+' 🎉';ding();boom(25);speak((w?w+'. ':'')+'Brawo!')}
+function ok(w){const f=$('fb'),e=EN[w];f.className='fb';f.innerHTML=(e?`${cap(e)} = ${w} 🎉`:'Brawo! 🎉');ding();boom(25);
+ if(e)speak(e+'!','en-GB',()=>speak(e+'. Good job!','en-GB'));else speak('Good job!','en-GB')}
+const cap=s=>s[0].toUpperCase()+s.slice(1);
 function oops(){const f=$('fb');f.className='fb no';f.textContent='Spróbuj jeszcze raz 🙂';speak('Spróbuj jeszcze raz')}
 function rMatch(t){
  const lc=$('lc'),rc=$('rc');lc.innerHTML=rc.innerHTML='';$('ln').innerHTML='';
@@ -162,7 +165,7 @@ function pickR(b,k,t){
  if(sel===null){b.classList.add('shake');setTimeout(()=>b.classList.remove('shake'),400);speak('Najpierw dotknij obrazka po lewej');return}
  const l=$('lc').children[sel];l.classList.remove('on');
  if(k===sel){const c=['#ff6b4a','#14a38b','#7c4dff'][k%3];[l,b].forEach(e=>{e.disabled=true;e.style.setProperty('--c',c)});links.push([l,b,c]);draw();sel=null;
-  if(++done===t.P.length){ok(t.P[k].s);setTimeout(next,1700)}else{ding();speak(t.P[k].s)}}
+  if(++done===t.P.length){ok(t.P[k].s);setTimeout(next,1700)}else{ding();$('fb').className='fb';$('fb').textContent=cap(EN[t.P[k].s])+' = '+t.P[k].s;speak(EN[t.P[k].s],'en-GB')}}
  else{mist++;[l,b].forEach(e=>{e.classList.add('shake');setTimeout(()=>e.classList.remove('shake'),400)});sel=null;oops()}}
 function draw(){
  const c=$('mt').getBoundingClientRect();
