@@ -19,6 +19,8 @@ main{max-width:680px;margin:auto}
 .hidden{display:none!important}
 h2{font-size:clamp(1.8rem,8vw,2.6rem);margin:4px 0 6px;line-height:1}
 .sub{color:var(--mut);font-weight:700;margin:0 0 16px}
+.nl{display:block;font-weight:800;color:var(--mut);margin:0 0 16px}
+#nm{display:block;width:100%;margin-top:6px;border:3px solid var(--ink);border-radius:14px;padding:12px 14px;font:inherit;font-size:1.3rem;font-weight:900;color:var(--ink);background:#fff;user-select:text;-webkit-user-select:text}
 .menu{display:grid;gap:14px}
 .mc{display:flex;align-items:center;gap:14px;text-align:left;border:3px solid var(--ink);border-radius:22px;padding:14px 16px;font:inherit;color:var(--ink);cursor:pointer;box-shadow:0 6px 0 var(--ink);background:#fff}
 .mc:active{transform:translateY(5px);box-shadow:0 1px 0 var(--ink)}
@@ -68,6 +70,7 @@ h2{font-size:clamp(1.8rem,8vw,2.6rem);margin:4px 0 6px;line-height:1}
 
 <section class="card" id="menu">
  <h2>Co robimy?</h2><p class="sub">Dotknij obrazek — lektor wszystko przeczyta!</p>
+ <label class="nl">👋 Imię dziecka (dla rodzica):<input id="nm" type="text" maxlength="20" autocomplete="off" placeholder="np. Bartek"></label>
  <div class="menu" id="mn"></div>
 </section>
 
@@ -136,10 +139,10 @@ const MENU=[['🔢','Liczby 1–5','Policz i połącz z cyfrą','n5','m0'],['�
 MENU.forEach(([e,t,s,k,c])=>{const b=document.createElement('button');b.className='mc '+c;b.innerHTML=`<span class="e">${e}</span><div><b>${t}</b><span>${s}</span></div>`;b.onclick=()=>start(k);$('mn').append(b)});
 /* ---- engine ---- */
 let mode,T,i,mist,lock,sel,done,links;
-const show=id=>{['menu','play','res'].forEach(x=>$(x).classList.toggle('hidden',x!==id));$('home').classList.toggle('hidden',id==='menu');window.scrollTo({top:0})};
+const show=id=>{tok++;['menu','play','res'].forEach(x=>$(x).classList.toggle('hidden',x!==id));$('home').classList.toggle('hidden',id==='menu');window.scrollTo({top:0})};
 function start(k){mode=k;T=SETS[k]();i=0;mist=0;show('play');render()}
 function render(){
- const t=T[i];lock=0;sel=null;done=0;links=[];
+ const t=T[i];tok++;lock=0;sel=null;done=0;links=[];
  $('st').textContent='⭐'.repeat(i)+'☆'.repeat(T.length-i);
  $('q').textContent=t.q;$('fb').textContent='';$('fb').className='fb';
  const A=$('ans'),M=$('mt'),H=$('hero');A.innerHTML='';
@@ -149,10 +152,15 @@ function render(){
  setTimeout(()=>speak(t.say),350)}
 function choose(j,b){
  if(lock)return;const t=T[i];
- if(j===t.c){lock=1;b.classList.add('good');[...$('ans').children].forEach(e=>e.disabled=true);ok(t.s[j]);setTimeout(next,1700)}
+ if(j===t.c){lock=1;b.classList.add('good');[...$('ans').children].forEach(e=>e.disabled=true);ok(t.s[j],next)}
  else{mist++;b.classList.add('bad','shake');b.disabled=true;oops()}}
-function ok(w){const f=$('fb'),e=EN[w];f.className='fb';f.innerHTML=(e?`${cap(e)} = ${w} 🎉`:'Brawo! 🎉');ding();boom(25);
- if(e)speak(e+'!','en-GB',()=>speak(e+'. Good job!','en-GB'));else speak('Good job!','en-GB')}
+let tok=0;
+function ok(w,cb){const f=$('fb'),e=EN[w],tk=tok;f.className='fb';f.innerHTML=(e?`${cap(e)} = ${w} 🎉`:'Brawo! 🎉');ding();boom(25);
+ const go=()=>{if(tk===tok)setTimeout(()=>{if(tk===tok)cb()},500)};
+ if(e)speak(e+'!','en-GB',()=>speak('Brawo!','pl-PL',go));else speak('Brawo!','pl-PL',go)}
+let NAME='';try{NAME=localStorage.getItem('mq_name')||''}catch(e){}
+$('nm').value=NAME;
+$('nm').oninput=()=>{NAME=$('nm').value.trim();try{localStorage.setItem('mq_name',NAME)}catch(e){}};
 const cap=s=>s[0].toUpperCase()+s.slice(1);
 function oops(){const f=$('fb');f.className='fb no';f.textContent='Spróbuj jeszcze raz 🙂';speak('Spróbuj jeszcze raz')}
 function rMatch(t){
@@ -165,7 +173,7 @@ function pickR(b,k,t){
  if(sel===null){b.classList.add('shake');setTimeout(()=>b.classList.remove('shake'),400);speak('Najpierw dotknij obrazka po lewej');return}
  const l=$('lc').children[sel];l.classList.remove('on');
  if(k===sel){const c=['#ff6b4a','#14a38b','#7c4dff'][k%3];[l,b].forEach(e=>{e.disabled=true;e.style.setProperty('--c',c)});links.push([l,b,c]);draw();sel=null;
-  if(++done===t.P.length){ok(t.P[k].s);setTimeout(next,1700)}else{ding();$('fb').className='fb';$('fb').textContent=cap(EN[t.P[k].s])+' = '+t.P[k].s;speak(EN[t.P[k].s],'en-GB')}}
+  if(++done===t.P.length){ok(t.P[k].s,next)}else{ding();$('fb').className='fb';$('fb').textContent=cap(EN[t.P[k].s])+' = '+t.P[k].s;speak(EN[t.P[k].s],'en-GB')}}
  else{mist++;[l,b].forEach(e=>{e.classList.add('shake');setTimeout(()=>e.classList.remove('shake'),400)});sel=null;oops()}}
 function draw(){
  const c=$('mt').getBoundingClientRect();
@@ -176,8 +184,9 @@ function next(){if(++i<T.length)render();else end()}
 function end(){
  show('res');const s=mist<=1?3:mist<=4?2:1;
  $('rs').textContent='⭐'.repeat(s)+'☆'.repeat(3-s);
- $('rtx').textContent=s==3?'Mistrz! 🏆':s==2?'Bardzo dobrze! 👏':'Ćwiczymy dalej! 💪';
- speak(s==3?'Brawo! Jesteś mistrzem!':'Bardzo dobrze! Zagrajmy jeszcze raz!');fan();boom(s*45)}
+ const nm=NAME?', '+NAME:'';
+ $('rtx').textContent=s==3?'Mistrz'+nm+'! 🏆':s==2?'Bardzo dobrze'+nm+'! 👏':'Ćwiczymy dalej'+nm+'! 💪';
+ speak(s==3?`Brawo${nm}! Jesteś mistrzem!`:`Bardzo dobrze${nm}! Zagrajmy jeszcze raz!`);fan();boom(s*45)}
 $('again').onclick=()=>start(mode);$('tomenu').onclick=$('home').onclick=()=>{if(window.speechSynthesis)speechSynthesis.cancel();show('menu')};
 $('sp').onclick=()=>speak(T[i].say);
 $('snd').onclick=()=>{sound=!sound;$('snd').textContent=sound?'🔊':'🔇';$('snd').setAttribute('aria-pressed',sound);if(!sound&&window.speechSynthesis)speechSynthesis.cancel()};
