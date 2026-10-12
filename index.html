@@ -103,7 +103,7 @@ const dig=n=>`<b class="dg">${n}</b>${dots(n)}`;
 const cir=i=>`<div class="cir" style="background:${COL[i][1]}"></div>`;
 const rep=(e,n)=>e.repeat(n);
 let sound=true,run=0;
-const EN={jeden:'one',dwa:'two',trzy:'three',cztery:'four',pięć:'five',sześć:'six',siedem:'seven',osiem:'eight',dziewięć:'nine',dziesięć:'ten',czerwony:'red',niebieski:'blue',żółty:'yellow',zielony:'green',pomarańczowy:'orange',fioletowy:'purple',różowy:'pink',biały:'white',pies:'dog',kot:'cat',królik:'rabbit',krowa:'cow',kura:'hen',świnka:'pig',żaba:'frog',koń:'horse',owca:'sheep',kaczka:'duck'};
+const EN={jeden:'one',dwa:'two',trzy:'three',cztery:'four',pięć:'five',sześć:'six',siedem:'seven',osiem:'eight',dziewięć:'nine',dziesięć:'ten',czerwony:'red',niebieski:'blue',żółty:'yellow',zielony:'green',pomarańczowy:'orange',fioletowy:'purple',różowy:'pink',biały:'white',pies:'dog',kot:'cat',królik:'rabbit',krowa:'cow',kura:'chicken',świnka:'pig',żaba:'frog',koń:'horse',owca:'sheep',kaczka:'duck'};
 function speak(t,lang='pl-PL',end){
  if(window.speechSynthesis)speechSynthesis.cancel();
  if(!sound||!window.speechSynthesis){end&&setTimeout(end,500);return}
