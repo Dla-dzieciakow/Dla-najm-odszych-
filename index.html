@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#fff6e0">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Mini Quest">
 <title>Mini Quest — zabawa i nauka</title>
 <style>
 :root{--ink:#1f2a5a;--mut:#667092;--paper:#fffdf6;--sun:#ffd54a;--sun2:#fff0b3;--red:#ff6b4a;--teal:#14a38b;--teal2:#dcf6ef;--bad:#ffe1dc;--line:#cfdcf2}
@@ -21,6 +27,8 @@ h2{font-size:clamp(1.8rem,8vw,2.6rem);margin:4px 0 6px;line-height:1}
 .sub{color:var(--mut);font-weight:700;margin:0 0 16px}
 .nl{display:block;font-weight:800;color:var(--mut);margin:0 0 16px}
 #nm{display:block;width:100%;margin-top:6px;border:3px solid var(--ink);border-radius:14px;padding:12px 14px;font:inherit;font-size:1.3rem;font-weight:900;color:var(--ink);background:#fff;user-select:text;-webkit-user-select:text}
+.ib{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--teal2);border:3px solid var(--teal);border-radius:18px;padding:10px 12px;margin-bottom:14px;font-weight:800;line-height:1.35;box-shadow:0 4px 0 var(--teal)}
+.ib span{flex:1;min-width:180px}.ib .btn{padding:9px 14px;font-size:1rem}.ib .x{border:0;background:none;font-size:1.4rem;color:var(--mut);cursor:pointer;padding:4px 8px}
 .menu{display:grid;gap:14px}
 .mc{display:flex;align-items:center;gap:14px;text-align:left;border:3px solid var(--ink);border-radius:22px;padding:14px 16px;font:inherit;color:var(--ink);cursor:pointer;box-shadow:0 6px 0 var(--ink);background:#fff}
 .mc:active{transform:translateY(5px);box-shadow:0 1px 0 var(--ink)}
@@ -66,6 +74,7 @@ h2{font-size:clamp(1.8rem,8vw,2.6rem);margin:4px 0 6px;line-height:1}
 </head>
 <body>
 <main>
+<div class="ib hidden" id="inst"><span id="it">📲 Zainstaluj grę na telefonie: skrót na ekranie głównym, działa nawet bez internetu.</span><button class="btn go" id="instb">Zainstaluj</button><button class="x" id="instx" aria-label="Zamknij">✕</button></div>
 <header class="top"><div class="logo">🦁</div><div class="brand">Mini Quest<small>zabawa i nauka • 4+</small></div><button class="tb hidden" id="home" aria-label="Menu">🏠</button><button class="tb" id="snd" aria-pressed="true">🔊</button></header>
 
 <section class="card" id="menu">
@@ -88,7 +97,7 @@ h2{font-size:clamp(1.8rem,8vw,2.6rem);margin:4px 0 6px;line-height:1}
  <div class="acts"><button class="btn go" id="again">Jeszcze raz!</button><button class="btn" id="tomenu">Menu</button></div>
 </section>
 <div id="fx"></div>
-<div class="foot">Dla dzieci ok. 4 lat. Dźwięk i głos zależą od telefonu. Rodzicu: usiądź obok i licz razem z dzieckiem 🙂</div>
+<div class="foot">Dla dzieci ok. 4 lat. Dźwięk i głos zależą od telefonu. Rodzicu: usiądź obok i licz razem z dzieckiem 🙂<br>Opracował i stworzył Marek Labocha 😉</div>
 </main>
 <script>
 const $=id=>document.getElementById(id);
@@ -200,6 +209,20 @@ function boom(k){const f=$('fx'),c=['#ff6b4a','#ffd54a','#14a38b','#7c4dff','#4a
  for(let j=0;j<k;j++){const e=document.createElement('i');e.className='cf';e.style.cssText=`left:${Math.random()*100}%;background:${c[j%6]};animation-duration:${2+Math.random()*2.5}s;animation-delay:${Math.random()*.8}s;width:${6+Math.random()*8}px`;f.append(e)}
  setTimeout(()=>{while(f.children.length>80)f.firstChild.remove()},6000)}
 if(window.speechSynthesis)speechSynthesis.getVoices();
+/* ---- instalacja jako aplikacja ---- */
+let dp=null;
+const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+const ios=/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+let closed=0;try{closed=sessionStorage.getItem('mq_ix')}catch(e){}
+if(!standalone&&!closed)$('inst').classList.remove('hidden');
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e});
+addEventListener('appinstalled',()=>$('inst').classList.add('hidden'));
+$('instb').onclick=async()=>{
+ if(dp){dp.prompt();await dp.userChoice;dp=null;$('inst').classList.add('hidden');return}
+ $('it').textContent=ios?'📲 Stuknij ikonę „Udostępnij” (kwadrat ze strzałką) i wybierz „Do ekranu początkowego”.':'📲 Otwórz menu przeglądarki (⋮) i wybierz „Zainstaluj aplikację” albo „Dodaj do ekranu głównego”.';
+ $('instb').classList.add('hidden')};
+$('instx').onclick=()=>{$('inst').classList.add('hidden');try{sessionStorage.setItem('mq_ix','1')}catch(e){}};
+if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>
 </html>
