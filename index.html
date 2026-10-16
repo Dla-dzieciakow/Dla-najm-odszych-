@@ -313,7 +313,7 @@ css.textContent=`#mn{margin-left:auto;border:3px solid var(--ink);background:#ff
 .tabb{border:3px solid var(--ink);background:#fff;border-radius:99px;padding:8px 16px;font:inherit;font-weight:900;font-size:1rem;color:var(--ink);cursor:pointer;box-shadow:0 4px 0 var(--ink)}.tabb.on{background:var(--sun)}
 .gc.farmt{background:#ffe9c7}.em{font-size:clamp(3rem,16vw,4.6rem);line-height:1}.blob{width:72%;aspect-ratio:1;border-radius:50%;border:3px solid var(--ink);display:block}
 #pe .tabb{font-size:1.6rem;padding:6px 12px}.pw{position:relative}.pdel{position:absolute;top:8px;right:8px;border:2px solid var(--ink);background:#fff;border-radius:10px;font:inherit;font-weight:900;padding:2px 9px;cursor:pointer}.gm.two{grid-template-columns:1fr 1fr}.gm.two .gc b{font-size:1.05rem}
-#fs{width:100%;height:auto;touch-action:none;border:3px solid var(--ink);border-radius:18px;display:block}.pc{transition:transform .25s;cursor:grab}.pc.dr{transition:none}`;
+#fscene{width:100%;height:auto;touch-action:none;border:3px solid var(--ink);border-radius:18px;display:block}.pc{transition:transform .25s;cursor:grab}.pc.dr{transition:none}`;
 document.head.append(css);
 const main=document.querySelector('main'),foot=document.querySelector('.foot');
 ['home','kids','farm','prof'].forEach(id=>{const s=document.createElement('section');s.className='card hidden';s.id=id;main.insertBefore(s,foot)});
@@ -384,9 +384,9 @@ function farmMenu(){show('farm');const F=$('farm');
 function farm(k){
  const V=PT[k],n=V.p.length,F=$('farm');let cnt=0,drag=0,o;const X=[],Y=[];
  const tray=shuf([[55,190],[150,190],[245,190],[55,252],[150,252],[245,252]]);
- F.innerHTML=`<span class="kind">${V.n.toUpperCase()}</span><p class="hint" style="margin:8px 0">Przeciągnij elementy na swoje miejsce!</p><svg id="fs" viewBox="0 0 300 290"><rect width="300" height="146" fill="#dff3ff"/><rect y="144" width="300" height="146" fill="#b5e2a1"/><text x="248" y="34" font-size="26">☀️</text><g id="sl">${V.p.map(p=>`<g style="opacity:.22;filter:brightness(0)">${p}</g>`).join('')}</g><g id="vh">${V.p.map(p=>`<g class="pc">${p}</g>`).join('')}${V.away?'':`<g id="tw" style="transform:translateX(250px);transition:transform 2.6s ease-out"><g transform="translate(288 36) scale(-.75 .75)">${PT.tractor.p.join('')}</g></g>`}</g></svg><div class="fb hidden" id="ft"></div><div class="acts"><button class="btn alt" id="fa">Wybierz maszynę</button></div>`;
+ F.innerHTML=`<span class="kind">${V.n.toUpperCase()}</span><p class="hint" style="margin:8px 0">Przeciągnij elementy na swoje miejsce!</p><svg id="fscene" viewBox="0 0 300 290"><rect width="300" height="146" fill="#dff3ff"/><rect y="144" width="300" height="146" fill="#b5e2a1"/><text x="248" y="34" font-size="26">☀️</text><g id="sl">${V.p.map(p=>`<g style="opacity:.22;filter:brightness(0)">${p}</g>`).join('')}</g><g id="vh">${V.p.map(p=>`<g class="pc">${p}</g>`).join('')}${V.away?'':`<g id="tw" style="transform:translateX(250px);transition:transform 2.6s ease-out"><g transform="translate(288 36) scale(-.75 .75)">${PT.tractor.p.join('')}</g></g>`}</g></svg><div class="fb hidden" id="ft"></div><div class="acts"><button class="btn alt" id="fa">Wybierz maszynę</button></div>`;
  $('fa').onclick=farmMenu;
- const S=$('fs'),P=[...S.querySelectorAll('.pc')],SL=[...$('sl').children];
+ const S=$('fscene'),P=[...S.querySelectorAll('.pc')],SL=[...$('sl').children];
  const pt=e=>new DOMPoint(e.clientX,e.clientY).matrixTransform(S.getScreenCTM().inverse());
  const set=i=>P[i].style.transform=`translate(${X[i]}px,${Y[i]}px)`;
  const done=()=>{const ft=$('ft');ft.classList.remove('hidden');ft.innerHTML=`<b>Gratulacje!</b><br>Złożyłeś: ${V.n}!`;inc('f_'+k);fan(1);boom(120);say(`Congratulations! You built the ${V.en}!`);
@@ -421,10 +421,10 @@ function profs(){show('prof');const R=$('prof');
  $('pl').append(mkb('gc farmt','<b>➕ Nowe dziecko</b><span>Imię i ulubiona emotka</span>',form));
  if(!DB.list.length)form()}
 function form(){let em=EMO[0];
- $('pf').innerHTML='<div class="fb" style="background:#fff;margin-top:14px"><b>Nowy profil</b><input id="pn" maxlength="12" placeholder="Imię" style="font:inherit;font-size:1.3rem;font-weight:800;border:3px solid var(--ink);border-radius:12px;padding:10px;width:100%;margin:10px 0"><div class="chips" id="pe"></div><div class="acts"><button class="btn go" id="ps">Zapisz</button></div></div>';
+ $('pf').innerHTML='<div class="fb" style="background:#fff;margin-top:14px"><b>Nowy profil</b><input id="pname" maxlength="12" placeholder="Imię" style="font:inherit;font-size:1.3rem;font-weight:800;border:3px solid var(--ink);border-radius:12px;padding:10px;width:100%;margin:10px 0"><div class="chips" id="pe"></div><div class="acts"><button class="btn go" id="ps">Zapisz</button></div></div>';
  EMO.forEach(e=>$('pe').append(mkb('tabb'+(e==em?' on':''),e,function(){em=e;[...$('pe').children].forEach(c=>c.classList.remove('on'));this.classList.add('on')})));
- $('ps').onclick=()=>{const n=$('pn').value.trim();if(!n){$('pn').focus();return}const x={id:Date.now().toString(36),n,e:em,p:{}};DB.list.push(x);DB.cur=x.id;sv();home()};
- $('pn').focus()}
+ $('ps').onclick=()=>{const n=$('pname').value.trim();if(!n){$('pname').focus();return}const x={id:Date.now().toString(36),n,e:em,p:{}};DB.list.push(x);DB.cur=x.id;sv();home()};
+ $('pname').focus()}
 
 /* ===== MENU GŁÓWNE Z ZAKŁADKAMI ===== */
 let tab=0;
