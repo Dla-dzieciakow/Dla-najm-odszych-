@@ -172,6 +172,7 @@ function seq(items){
 }
 function script(t){
  const b=[...$('answers').children];
+ if(t.noread)return[[t.q,$('q')]];
  if(t.say)return[[t.say,$('hero')],[t.say,$('hero')]];
  if(t.k==='match')return $('lc').children.length?[...$('lc').children].map(e=>[e.textContent,e]):[];
  if(t.k==='listen')return[[t.s,$('hero')],[t.s,$('hero')]];
@@ -521,7 +522,7 @@ const two={
  letter(){const k=pu2(),w=NM[k],i=Math.random()*w.length|0,ch=w[i],pool='abcdefghilmnoprstuwy'.split('').filter(x=>x!==ch),o=shuf([ch,...shuf(pool).slice(0,2)]);
   return{k:'pick',type:'LITERKI',q:'Which letter is missing?',p:'Jakiej litery brakuje w słowie?',h:I(k,'ic')+wsz((w.slice(0,i)+'_'+w.slice(i+1)).toUpperCase()),o:o.map(x=>x.toUpperCase()),c:o.indexOf(ch),w:`${cap(w)} — brakuje litery ${ch.toUpperCase()}.`}},
  spell(){const k=pu2(),w=NM[k],c=new Set;for(let i=0;i<w.length-1;i++)if(w[i]!==w[i+1])c.add(w.slice(0,i)+w[i+1]+w[i]+w.slice(i+2));for(let i=1;i<w.length;i++)c.add(w.slice(0,i)+w.slice(i+1));c.add(w+'e');c.delete(w);
-  const o=shuf([w,...shuf([...c]).slice(0,2)]);return{k:'pick',type:'PISOWNIA',q:'Which spelling is correct?',p:'Wybierz poprawnie napisane słowo.',h:I(k,'ic big'),o:o.map(x=>x.toUpperCase()),c:o.indexOf(w),w:`${cap(w)} = ${PL[k]}.`}},
+  const o=shuf([w,...shuf([...c]).slice(0,2)]);return{noread:1,k:'pick',type:'PISOWNIA',q:'Which spelling is correct?',p:'Wybierz poprawnie napisane słowo.',h:I(k,'ic big'),o:o.map(x=>x.toUpperCase()),c:o.indexOf(w),w:`${cap(w)} = ${PL[k]}.`}},
  match(){return{k:'match',type:'ŁĄCZENIE',q:'Match the words and pictures.',p:'Dotknij słowa, potem jego obrazka.',pairs:shuf(R1([FRU,COLS])).slice(0,4).map(k=>[NM[k],k])}}
 };
 const PAT2=['pick','listen','tf','colour','letter','read','match','pick','tf','spell','colour','read','listen','letter','match'];
