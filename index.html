@@ -146,7 +146,7 @@ main{max-width:680px;margin:auto}
 .bal{position:absolute;bottom:-120px;width:70px;height:86px;border:0;border-radius:50% 50% 46% 46%;color:#fff;font:inherit;font-weight:900;font-size:.76rem;cursor:pointer;box-shadow:inset -8px -8px 0 rgba(0,0,0,.12);animation:rise linear forwards;display:grid;place-items:center;padding:4px;text-shadow:0 1px 2px rgba(0,0,0,.35)}
 .bal span{pointer-events:none;line-height:1.05}
 .bal.pop{animation:bang .35s forwards}@keyframes bang{to{transform:scale(1.7);opacity:0}}
-@keyframes rise{to{transform:translateY(-150%)}}
+@keyframes rise{to{transform:translateY(-640px)}}
 .foam{position:absolute;font-size:1.3rem;pointer-events:none;animation:flyup .8s ease-out forwards}
 .shine{animation:shn .8s ease-out}@keyframes shn{50%{filter:brightness(1.8) drop-shadow(0 0 12px #fff)}}
 .pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:10px;margin:10px 0}
@@ -352,8 +352,8 @@ function finale(){
  stop();$('res').classList.add('hidden');$('fin').classList.remove('hidden');bk='fin';
  const tot=lvP.reduce((a,b)=>a+b,0),all=NL*LV,flaw=terr==0,lv=lvP.map((p,i)=>`<span>Poziom ${i+1}: ${p}/${LV}</span>`).join('');
  const date=new Date().toLocaleDateString('pl-PL');
- $('finb').innerHTML=flaw?`<div class="dip"><svg class="cr" viewBox="0 0 64 50"><path d="M6 40L2 12l16 14L32 4l14 22 16-14-4 28z" fill="#ffc83d" stroke="#1f2a5a" stroke-width="3" stroke-linejoin="round"/><rect x="6" y="39" width="52" height="8" rx="3" fill="#ffd54a" stroke="#1f2a5a" stroke-width="3"/><circle cx="32" cy="12" r="3.5" fill="#ff6b4a"/><circle cx="16" cy="31" r="3" fill="#14a38b"/><circle cx="48" cy="31" r="3" fill="#4a7bff"/></svg><div class="dt">DYPLOM</div><div class="dm">MISTRZ ANGIELSKIEGO</div><p>za bezbłędne ukończenie całego testu Unit ${window.UNIT||1}<br>${tot}/${all} — ani jednej pomyłki!</p><div class="nm" contenteditable="true" spellcheck="false" aria-label="Imię">Twoje imię</div><p>${date}</p></div><div class="acts" style="margin-bottom:14px"><button class="btn alt" onclick="print()">Zapisz / wydrukuj dyplom</button></div>`
- :`<div class="stars">${I('star','ic')}${I('star','ic')}${I('star','ic')}</div><div class="rt" style="font-size:2rem;margin:10px 0">Gratulacje!</div><p style="text-align:center;font-weight:700;line-height:1.5">Przeszedłeś cały Unit ${window.UNIT||1} — ${tot}/${all} punktów.<br>Zrób test bez ani jednej pomyłki, a zdobędziesz złotą koronę i dyplom!</p><div class="lvs">${lv}</div>`;
+ $('finb').innerHTML=flaw?`<div class="dip"><svg class="cr" viewBox="0 0 64 50"><path d="M6 40L2 12l16 14L32 4l14 22 16-14-4 28z" fill="#ffc83d" stroke="#1f2a5a" stroke-width="3" stroke-linejoin="round"/><rect x="6" y="39" width="52" height="8" rx="3" fill="#ffd54a" stroke="#1f2a5a" stroke-width="3"/><circle cx="32" cy="12" r="3.5" fill="#ff6b4a"/><circle cx="16" cy="31" r="3" fill="#14a38b"/><circle cx="48" cy="31" r="3" fill="#4a7bff"/></svg><div class="dt">DYPLOM</div><div class="dm">MISTRZ ANGIELSKIEGO</div><p>za bezbłędne ukończenie całego testu ${window.UNITNAME||('Unit '+(window.UNIT||1))}<br>${tot}/${all} — ani jednej pomyłki!</p><div class="nm" contenteditable="true" spellcheck="false" aria-label="Imię">Twoje imię</div><p>${date}</p></div><div class="acts" style="margin-bottom:14px"><button class="btn alt" onclick="print()">Zapisz / wydrukuj dyplom</button></div>`
+ :`<div class="stars">${I('star','ic')}${I('star','ic')}${I('star','ic')}</div><div class="rt" style="font-size:2rem;margin:10px 0">Gratulacje!</div><p style="text-align:center;font-weight:700;line-height:1.5">Przeszedłeś cały ${window.UNITNAME||('Unit '+(window.UNIT||1))} — ${tot}/${all} punktów.<br>Zrób test bez ani jednej pomyłki, a zdobędziesz złotą koronę i dyplom!</p><div class="lvs">${lv}</div>`;
  if(flaw){try{localStorage.setItem('eq_gold'+((window.UNIT||1)>1?window.UNIT:''),'1')}catch(e){}}
  try{window.eqFinish&&window.eqFinish(flaw,tot,all)}catch(e){}
  fan(flaw?1:0);boom(flaw?170:80);window.scrollTo({top:0});
@@ -430,7 +430,7 @@ css.textContent=`#mn{margin-left:auto;border:3px solid var(--ink);background:#ff
 #farm{padding:12px}#fscene{width:100%;height:calc(100vh - 280px);height:calc(100dvh - 280px);min-height:300px;touch-action:none;border:3px solid var(--ink);border-radius:18px;display:block}.pc{transition:transform .25s;cursor:grab}.pc.dr{transition:none}`;
 document.head.append(css);
 const main=document.querySelector('main'),foot=document.querySelector('.foot');
-['home','kids','farm','prof','games','gx','prog'].forEach(id=>{const s=document.createElement('section');s.className='card hidden';s.id=id;main.insertBefore(s,foot)});
+['home','kids','farm','prof','games','gx','prog'].forEach(id=>{const s=document.createElement('section');s.className='card hidden';s.id=id;if(id==='gx')s.innerHTML='<div id="gxb"></div>';main.insertBefore(s,foot)});
 let ST=0;
 const show=id=>{stop();ST++;document.querySelectorAll('main>section.card').forEach(s=>s.classList.add('hidden'));$(id).classList.remove('hidden');scrollTo(0,0)};
 const al=(f,ms)=>{const id=ST;setTimeout(()=>{if(id===ST)f()},ms)};
@@ -699,10 +699,10 @@ const CMDS=[['Touch your nose.','nose'],['Point to your eyes.','eyes'],['Clap yo
 const UVD={
  1:{n:'Unit 1 – School Things',qp:'What is it?',keep:1,w:[['pencil','pencil','ołówek'],['pen','pen','długopis'],['ruler','ruler','linijka'],['rubber','rubber','gumka'],['book','book','książka'],['bag','school bag','plecak']]},
  2:{n:'Unit 2 – Fruits and Colours',qp:'What is it?',keep:1,w:[['apple','apple','jabłko'],['banana','banana','banan'],['orange','orange','pomarańcza'],['strawberry','strawberry','truskawka'],['grapes','grapes','winogrona'],['pear','pear','gruszka'],['red','red','czerwony'],['blue','blue','niebieski'],['yellow','yellow','żółty'],['green','green','zielony'],['pink','pink','różowy'],['purple','purple','fioletowy']]},
- 3:{n:'Unit 3 – Numbers and Toys',qp:'What is it?',num:1,w:[['ball','ball','piłka','\u26bd'],['doll','doll','lalka','\ud83e\udeb6'],['teddybear','teddy bear','miś','\ud83e\uddf8'],['car','car','samochód','\ud83d\ude97'],['train','train','pociąg','\ud83d\ude82'],['robot','robot','robot','\ud83e\udd16']]},
+ 3:{n:'Unit 3 – Numbers and Toys',qp:'What is it?',num:1,w:[['ball','ball','piłka','\u26bd'],['doll','doll','lalka','\ud83c\udf8e'],['teddybear','teddy bear','miś','\ud83e\uddf8'],['car','car','samochód','\ud83d\ude97'],['train','train','pociąg','\ud83d\ude82'],['robot','robot','robot','\ud83e\udd16']]},
  4:{n:'Unit 4 – My Family',qp:'Who is this?',w:[['mum','mum','mama','\ud83d\udc69'],['dad','dad','tata','\ud83d\udc68'],['sister','sister','siostra','\ud83d\udc67'],['brother','brother','brat','\ud83d\udc66'],['grandma','grandma','babcia','\ud83d\udc75'],['grandpa','grandpa','dziadek','\ud83d\udc74']]},
  5:{n:'Unit 5 – Animals',qp:'What is it?',num:1,w:[['dog','dog','pies','\ud83d\udc36'],['cat','cat','kot','\ud83d\udc31'],['cow','cow','krowa','\ud83d\udc2e'],['horse','horse','koń','\ud83d\udc34'],['pig','pig','świnka','\ud83d\udc37'],['duck','duck','kaczka','\ud83e\udd86'],['rabbit','rabbit','królik','\ud83d\udc30'],['sheep','sheep','owca','\ud83d\udc11']]},
- 6:{n:'Unit 6 – My Body',qp:'What is it?',w:[['head','head','głowa','\ud83e\uddd1'],['eyes','eyes','oczy','\ud83d\udc40',1],['ears','ears','uszy','\ud83d\udc42',1],['nose','nose','nos','\ud83d\udc43'],['mouth','mouth','usta','\ud83d\udc44'],['hands','hands','dłonie','\ud83e\udd32',1],['feet','feet','stopy','\ud83e\uddb6',1]]}
+ 6:{n:'Unit 6 – My Body',qp:'What is it?',w:[['head','head','głowa','\ud83d\udc64'],['eyes','eyes','oczy','\ud83d\udc40',1],['ears','ears','uszy','\ud83d\udc42',1],['nose','nose','nos','\ud83d\udc43'],['mouth','mouth','usta','\ud83d\udc44'],['hands','hands','dłonie','\ud83d\ude4c',1],['feet','feet','stopy','\ud83d\udc63',1]]}
 };
 (()=>{const s=[];Object.values(UVD).forEach(U=>{if(U.keep)return;U.w.forEach(w=>{s.push('<symbol id="'+w[0]+'" viewBox="0 0 64 64"><text x="32" y="52" font-size="52" text-anchor="middle">'+w[3]+'</text></symbol>')})});
  document.querySelector('svg defs').insertAdjacentHTML('beforeend',s.join(''))})();
@@ -749,13 +749,13 @@ function mkU(u){
    h:I(k,'ic')+'<span class="word" style="font-size:clamp(1.2rem,6vw,1.8rem)">'+(w.slice(0,i)+'_'+w.slice(i+1)).toUpperCase()+'</span>'},
    base(k,o.map(x=>x.toUpperCase()),o.indexOf(ch)))};
  q.tf=()=>{const k=W1()[0],yes=Math.random()<.5,alt=shuf(W.filter(x=>x[0]!==k))[0]||W1(),sub=yes?k:alt[0];
-  return Object.assign({k:'pick',type:'PRAWDA / FAŁSZ',q:'True or false?',p:'Posłuchaj zdania. Czy pasuje do obrazka?',h:I(k,'ic big'),say:sent(sub),
+  return Object.assign(base(k,[],0),{k:'pick',type:'PRAWDA / FAŁSZ',q:'True or false?',p:'Posłuchaj zdania. Czy pasuje do obrazka?',h:I(k,'ic big'),say:sent(sub),
    o:['TRUE — prawda','FALSE — fałsz'],c:yes?0:1,
-   w:'Na obrazku: '+PLw(k)+' ('+ENw(k)+'). Zdanie: „'+sent(sub)+'” — '+(yes?'prawda':'fałsz')+'.'},base(k,[],0))};
+   w:'Na obrazku: '+PLw(k)+' ('+ENw(k)+'). Zdanie: „'+sent(sub)+'” — '+(yes?'prawda':'fałsz')+'.'})};
  q.count=()=>{if(!U.num)return q.read();
   const k=W1()[0],nn=1+Math.random()*10|0,o=shuf([nn].concat(oth(NUMS,nn,2)));
-  return Object.assign({k:'pick',type:'LICZENIE',q:'How many?',p:'Policz i wybierz właściwą liczbę.',
-   h:'<div class="crow">'+I(k,'ic').repeat(nn)+'</div>',o:o.map(x=>cap(NW[x])),c:o.indexOf(nn),w:nn+' = '+NW[nn]+'.'},base(k,[],0))};
+  return Object.assign(base(k,[],0),{k:'pick',type:'LICZENIE',q:'How many?',p:'Policz i wybierz właściwą liczbę.',
+   h:'<div class="crow">'+I(k,'ic').repeat(nn)+'</div>',o:o.map(x=>cap(NW[x])),c:o.indexOf(nn),w:nn+' = '+NW[nn]+'.'})};
  q.do=()=>{
   if(u===6){const c=CMDS[Math.random()*CMDS.length|0],key=c[1],o=three(key);
    return Object.assign({k:'listen',type:'USŁUCHAJ I ZRÓB',q:'Listen and do.',p:'Posłuchaj polecenia i wskaż obrazek.',s:c[0]},
@@ -764,9 +764,9 @@ function mkU(u){
   return Object.assign({k:'listen',type:'USŁUCHAJ I ZRÓB',q:'Listen and do.',p:'Posłuchaj polecenia i wskaż właściwy obrazek.',s:'Point to the '+ENw(k)+'.'},
    base(k,o,o.indexOf(k)))};
  q.rep=()=>{const k=W1()[0];
-  return Object.assign({k:'pick',rep:1,type:'MÓW I POWTARZAJ',q:'Speak and repeat.',p:'Posłuchaj i powiedz na głos, potem dotknij przycisku.',
+  return Object.assign(base(k,[],0),{k:'pick',rep:1,type:'MÓW I POWTARZAJ',q:'Speak and repeat.',p:'Posłuchaj i powiedz na głos, potem dotknij przycisku.',
    h:I(k,'ic big')+'<div class="word" style="font-size:clamp(1.2rem,5.5vw,1.7rem)">'+ENw(k).toUpperCase()+'</div>',say:ENw(k),
-   o:['Powiedziałem! ✓'],c:0,w:cap(ENw(k))+' = '+PLw(k)+'. Powiedz to jeszcze raz na głos.'},base(k,[],0))};
+   o:['Powiedziałem! ✓'],c:0,w:cap(ENw(k))+' = '+PLw(k)+'. Powiedz to jeszcze raz na głos.'})};
  q.match=()=>{const p=shuf(W).slice(0,4);
   return{k:'match',type:'ŁĄCZENIE',q:'Match the words and pictures.',p:'Dotknij słowa, potem jego obrazka.',
    pairs:p.map(x=>[ENw(x[0]),x[0]]),w:'Połączone pary!'}};
@@ -1169,6 +1169,7 @@ function gWordF(){
   tiles.forEach(ch=>{
    const b=document.createElement('button');b.className='tile2';b.textContent=ch;
    b.onclick=()=>{
+    if(pos>=w.length)return;
     if(ch===w[pos]){
      sl.children[pos].textContent=ch;
      b.classList.add('used');b.disabled=true;pos++;
