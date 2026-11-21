@@ -69,6 +69,107 @@ main{max-width:680px;margin:auto}
 @media print{.top,.foot,.acts,#quiz,#res,#gm,#start,#fx{display:none!important}body{background:#fff}.card{box-shadow:none;border:0}}
 @media(max-width:420px){body{padding:8px}.match{gap:40px}.p .ic{width:100%}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+/* ===== ROZBUDOWA: MENU, GRY, POSTĘPY ===== */
+.sub{margin:18px 0 2px;font-weight:900;color:var(--mut);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase}
+.ah{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.hud{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;font-weight:900;font-size:.92rem;margin:2px 0 10px}
+.chip2{border:2.5px solid var(--ink);background:#fff;border-radius:99px;padding:4px 12px;font-weight:900;font-size:1rem;display:inline-flex;gap:5px;align-items:center;box-shadow:0 3px 0 var(--ink)}
+.chip2.ok{background:var(--teal2);border-color:var(--teal);box-shadow:0 3px 0 var(--teal)}
+.crow{display:flex;flex-wrap:wrap;gap:2px;justify-content:center;max-width:100%}
+.crow .ic{width:36px;height:36px}
+.stage{position:relative;border:3px solid var(--ink);border-radius:20px;background:linear-gradient(#eaf4ff,#dcecff);overflow:hidden;margin:8px 0 10px}
+.stage svg{display:block;width:100%;height:auto}
+.toast{position:fixed;left:50%;bottom:16px;transform:translate(-50%,180%);background:var(--ink);color:#fff;border-radius:16px;padding:12px 18px;font-weight:900;z-index:90;box-shadow:0 6px 0 rgba(0,0,0,.28);transition:transform .35s;max-width:92vw;text-align:center;line-height:1.35}
+.toast.on{transform:translate(-50%,0)}
+.btn.sm{padding:9px 14px;font-size:.92rem}
+.pop{animation:pop2 .35s ease-out}@keyframes pop2{0%{transform:scale(.7)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+.fly{animation:flyup .6s ease-out forwards}@keyframes flyup{to{transform:translateY(-70px) scale(.4);opacity:0}}
+.shop{display:grid;gap:8px;justify-items:center}
+.cust{display:flex;align-items:center;gap:10px;justify-content:center;width:100%}
+.ce{font-size:3.2rem;line-height:1;display:block}
+.bub{background:#fff;border:3px solid var(--ink);border-radius:18px;padding:8px 14px;font-weight:900;font-size:1.4rem;box-shadow:0 4px 0 var(--ink)}
+.shelf{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:12px 0 6px;padding:10px;border:3px solid #c78a4d;border-radius:16px;background:repeating-linear-gradient(#f9e6c1 0 33px,#e8c68d 33px 37px)}
+.good2{display:flex;flex-direction:column;align-items:center;gap:1px;border:3px solid var(--ink);border-radius:14px;background:#fff;padding:5px 3px;font:inherit;color:var(--ink);cursor:pointer;box-shadow:0 4px 0 var(--ink)}
+.good2:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.ge{font-size:1.9rem;line-height:1}
+.good2 b{font-size:.7rem;font-weight:900;color:var(--mut)}
+.basket{display:flex;align-items:center;gap:8px;border:3px dashed var(--line);border-radius:16px;padding:8px 12px;background:#fff;min-height:58px;width:100%}
+.basket .bl{font-size:1.9rem;line-height:1}
+.bitems{font-size:1.7rem;line-height:1.2;word-break:break-word;flex:1}
+.tray2{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:10px 0}
+.part{display:flex;flex-direction:column;align-items:center;gap:2px;border:3px solid var(--ink);border-radius:16px;background:#fff;padding:6px 3px;cursor:pointer;box-shadow:0 4px 0 var(--ink);font:inherit;color:var(--ink)}
+.part:active:not(:disabled){transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.part svg{width:64px;height:56px}
+.part span{font-size:.68rem;font-weight:900;color:var(--mut)}
+.rpart{animation:pop2 .4s ease-out}
+.dance{animation:dnc .6s ease-in-out infinite alternate}@keyframes dnc{to{transform:translateY(-6px) rotate(2deg)}}
+.farm2{position:relative;height:min(58vh,420px);min-height:300px;border:3px solid var(--ink);border-radius:18px;background:radial-gradient(circle at 30% 30%,#d8f3b8,#a9dd8b);overflow:hidden;margin:6px 0 10px}
+.barn{position:absolute;right:2%;bottom:2%;font-size:3.2rem;line-height:1;filter:drop-shadow(2px 3px 0 rgba(0,0,0,.18))}
+.animal{position:absolute;font-size:2.5rem;line-height:1;border:0;background:none;cursor:pointer;padding:6px;transition:transform .9s cubic-bezier(.4,.1,.6,1),opacity .9s;touch-action:manipulation}
+.animal.go{transform:translate(var(--dx,60px),var(--dy,60px)) scale(.4);opacity:0}
+.dust{position:absolute;font-size:1.2rem;animation:flyup .9s ease-out forwards;pointer-events:none}
+.map2{position:relative;height:min(58vh,420px);min-height:290px;border:3px solid var(--ink);border-radius:18px;background:radial-gradient(circle at 40% 40%,#fff3c4,#ffe07a 60%,#b7e2ff 61%,#8ec9f0);overflow:hidden;margin:6px 0 10px}
+.spot{position:absolute;border:0;background:none;cursor:pointer;padding:4px;transition:.2s}
+.spot svg{width:42px;height:42px;display:block}
+.spot.got{animation:flyup .5s ease-out forwards}
+.chest2{position:absolute;right:3%;bottom:3%;font-size:3rem;line-height:1;transition:.3s}
+.chest2.open{transform:scale(1.25) rotate(-6deg)}
+.belt2{border:3px solid var(--ink);border-radius:18px;background:repeating-linear-gradient(90deg,#e7e2d6 0 18px,#d6d0c2 18px 36px);padding:12px 8px;margin:8px 0}
+.beltrow{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;min-height:56px;align-items:center}
+.slot2{width:36px;height:46px;border-bottom:5px solid var(--ink);display:grid;place-items:center;font-size:1.6rem;font-weight:900;color:var(--teal);text-transform:uppercase}
+.tile2{width:46px;height:52px;border:3px solid var(--ink);border-radius:12px;background:#fff;font:inherit;font-size:1.4rem;font-weight:900;text-transform:uppercase;color:var(--ink);cursor:pointer;box-shadow:0 4px 0 var(--ink)}
+.tile2:active:not(.used){transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.tile2.used{opacity:.2;box-shadow:none;border-style:dashed}
+.ghost{text-align:center;font-weight:900;letter-spacing:.18em;color:#b9c3dc;font-size:1.35rem;min-height:1.6em}
+.rkstage{position:relative;height:min(54vh,400px);min-height:280px;border:3px solid var(--ink);border-radius:18px;background:linear-gradient(#0b1a3d,#243b7a 60%,#4a6bb5);overflow:hidden;margin:6px 0 10px}
+.rk{position:absolute;left:50%;bottom:12%;transform:translateX(-50%);font-size:3.4rem;line-height:1;transition:bottom 2.2s cubic-bezier(.5,0,.9,.4)}
+.rk.go{bottom:135%}
+.flame{position:absolute;left:50%;bottom:-26px;transform:translateX(-50%);font-size:1.5rem;opacity:0;transition:.2s}
+.flame.on{opacity:1;animation:fk .18s infinite alternate}@keyframes fk{to{transform:translateX(-50%) scale(1.25)}}
+.tanks{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:8px 0}
+.tank{display:flex;flex-direction:column;align-items:center;gap:3px;border:3px solid var(--ink);border-radius:14px;background:#fff;padding:7px 4px;font:inherit;color:var(--ink);cursor:pointer;box-shadow:0 4px 0 var(--ink)}
+.tank i{display:block;width:36px;height:36px;border-radius:10px;border:2.5px solid var(--ink)}
+.tank b{font-size:.66rem;color:var(--mut)}
+.tank:active:not(:disabled){transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.drops{display:flex;gap:6px;justify-content:center;margin:6px 0}
+.drops i{width:14px;height:14px;border-radius:50%;background:#dfe6f5;border:2px solid var(--ink)}
+.drops i.on{background:var(--teal)}
+.cdown{position:absolute;inset:0;display:grid;place-items:center;font-size:5rem;font-weight:900;color:#fff;text-shadow:0 6px 0 rgba(0,0,0,.35);pointer-events:none}
+.dino{font-size:4.4rem;line-height:1;display:block;text-align:center;transition:.25s}
+.dino.yum{animation:pop2 .4s ease-out}
+.pizza{position:relative;width:min(220px,70vw);aspect-ratio:1;margin:6px auto;border-radius:50%;background:radial-gradient(circle,#ffe08a 58%,#e8a43c 59%,#c9822c 74%,#ffe08a 75%);border:4px solid #b06f22;box-shadow:0 6px 0 rgba(0,0,0,.15)}
+.pizza .top{position:absolute;font-size:1.5rem;transform:translate(-50%,-50%);animation:pop2 .3s ease-out}
+.oven{border:3px solid var(--ink);border-radius:18px;padding:10px;background:#e9eef7;transition:.3s;margin:8px 0}
+.oven.on{background:radial-gradient(circle,#ffd27a,#ff9a3c);box-shadow:0 0 34px #ffb347 inset}
+.mon2{font-size:3.6rem;line-height:1;text-align:center;display:block}
+.sky{position:relative;height:min(56vh,420px);min-height:300px;border:3px solid var(--ink);border-radius:18px;background:linear-gradient(#cfeaff,#eaf6ff);overflow:hidden;margin:6px 0 10px}
+.bal{position:absolute;bottom:-120px;width:70px;height:86px;border:0;border-radius:50% 50% 46% 46%;color:#fff;font:inherit;font-weight:900;font-size:.76rem;cursor:pointer;box-shadow:inset -8px -8px 0 rgba(0,0,0,.12);animation:rise linear forwards;display:grid;place-items:center;padding:4px;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.bal span{pointer-events:none;line-height:1.05}
+.bal.pop{animation:bang .35s forwards}@keyframes bang{to{transform:scale(1.7);opacity:0}}
+@keyframes rise{to{transform:translateY(-150%)}}
+.foam{position:absolute;font-size:1.3rem;pointer-events:none;animation:flyup .8s ease-out forwards}
+.shine{animation:shn .8s ease-out}@keyframes shn{50%{filter:brightness(1.8) drop-shadow(0 0 12px #fff)}}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:10px;margin:10px 0}
+.pbox{border:3px solid var(--ink);border-radius:16px;background:#fff;padding:10px;text-align:center;box-shadow:0 4px 0 var(--ink)}
+.pbox b{display:block;font-size:1.6rem;line-height:1.1;color:var(--red)}
+.pbox span{font-size:.7rem;font-weight:900;color:var(--mut);text-transform:uppercase;letter-spacing:.05em}
+.prow{display:flex;align-items:center;gap:8px;margin:7px 0;font-weight:900;font-size:.84rem}
+.prow>span{min-width:72px}
+.prow .pb{flex:1;height:14px;border:2.5px solid var(--ink);border-radius:99px;background:#fff;overflow:hidden}
+.prow .pb i{display:block;height:100%;background:var(--teal)}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(102px,1fr));gap:9px;margin:10px 0}
+.badge2{border:3px solid var(--ink);border-radius:16px;background:#fff;padding:8px 6px;text-align:center;box-shadow:0 4px 0 var(--ink)}
+.badge2.lock{opacity:.45;filter:grayscale(1);box-shadow:none}
+.badge2 i{font-size:1.55rem;font-style:normal;display:block}
+.badge2 b{display:block;font-size:.7rem;margin-top:2px}
+.badge2 span{font-size:.6rem;color:var(--mut);font-weight:700;display:block;line-height:1.2;margin-top:2px}
+.hist{display:grid;gap:6px;margin-top:8px}
+.hist div{background:#fff;border:2.5px solid var(--line);border-radius:12px;padding:8px 10px;font-size:.8rem;font-weight:800;display:flex;justify-content:space-between;gap:8px}
+.wlist{display:grid;gap:8px;margin-top:8px}
+.wrow{display:flex;align-items:center;gap:10px;border:2.5px solid var(--line);border-radius:14px;background:#fff;padding:8px;text-align:left;font:inherit;color:var(--ink);cursor:pointer;width:100%}
+.wrow .ic{width:32px;height:32px;flex:none}
+.wrow b{font-size:.95rem;display:block}
+.wrow span{font-size:.72rem;color:var(--mut);font-weight:700}
 </style>
 </head>
 <body>
@@ -160,7 +261,7 @@ const COL=['#ff6b4a','#14a38b','#7c4dff','#e59a00'];
 const clr=()=>document.querySelectorAll('.say').forEach(e=>e.classList.remove('say'));
 function stop(){run++;if(window.speechSynthesis)speechSynthesis.cancel();clr()}
 function speak(t,end){
- let f=0;const d=()=>{if(!f){f=1;end()}};
+ let f=0;const d=()=>{if(!f){f=1;if(end)end()}};
  if(!window.speechSynthesis){setTimeout(d,900);return}
  const u=new SpeechSynthesisUtterance(t);u.lang='en-GB';u.rate=.8;u.pitch=1.05;
  const v=speechSynthesis.getVoices();const x=v.find(a=>a.lang==='en-GB')||v.find(a=>a.lang.startsWith('en'));if(x)u.voice=x;
@@ -202,6 +303,7 @@ function choose(i){
  if(lock)return;lock=1;stop();const t=T[n],b=[...$('answers').children],ok=i===t.c;
  b.forEach((e,j)=>{e.disabled=true;if(j===t.c)e.classList.add('good');else if(j===i)e.classList.add('bad')});
  if(ok)pts++;else terr++,wrong.push({q:t.q,a:t.k==='pick'||t.num?t.o[t.c]:N[t.o[t.c]],w:t.w});
+ try{if(ok)window.eqRight&&window.eqRight(t);else window.eqWrong&&window.eqWrong(t)}catch(e){}
  fin(ok?['Świetnie!','Brawo!','Tak jest!','Super!'][n%4]:'Prawie! Zapamiętaj:',t.w);
  const say=t.k==='listen'?t.s:t.k==='read'?t.s:t.o[t.c];if(ok)seq([[say,b[t.c]]]);
 }
@@ -253,6 +355,7 @@ function finale(){
  $('finb').innerHTML=flaw?`<div class="dip"><svg class="cr" viewBox="0 0 64 50"><path d="M6 40L2 12l16 14L32 4l14 22 16-14-4 28z" fill="#ffc83d" stroke="#1f2a5a" stroke-width="3" stroke-linejoin="round"/><rect x="6" y="39" width="52" height="8" rx="3" fill="#ffd54a" stroke="#1f2a5a" stroke-width="3"/><circle cx="32" cy="12" r="3.5" fill="#ff6b4a"/><circle cx="16" cy="31" r="3" fill="#14a38b"/><circle cx="48" cy="31" r="3" fill="#4a7bff"/></svg><div class="dt">DYPLOM</div><div class="dm">MISTRZ ANGIELSKIEGO</div><p>za bezbłędne ukończenie całego testu Unit ${window.UNIT||1}<br>${tot}/${all} — ani jednej pomyłki!</p><div class="nm" contenteditable="true" spellcheck="false" aria-label="Imię">Twoje imię</div><p>${date}</p></div><div class="acts" style="margin-bottom:14px"><button class="btn alt" onclick="print()">Zapisz / wydrukuj dyplom</button></div>`
  :`<div class="stars">${I('star','ic')}${I('star','ic')}${I('star','ic')}</div><div class="rt" style="font-size:2rem;margin:10px 0">Gratulacje!</div><p style="text-align:center;font-weight:700;line-height:1.5">Przeszedłeś cały Unit ${window.UNIT||1} — ${tot}/${all} punktów.<br>Zrób test bez ani jednej pomyłki, a zdobędziesz złotą koronę i dyplom!</p><div class="lvs">${lv}</div>`;
  if(flaw){try{localStorage.setItem('eq_gold'+((window.UNIT||1)>1?window.UNIT:''),'1')}catch(e){}}
+ try{window.eqFinish&&window.eqFinish(flaw,tot,all)}catch(e){}
  fan(flaw?1:0);boom(flaw?170:80);window.scrollTo({top:0});
 }
 let AC;
@@ -327,7 +430,7 @@ css.textContent=`#mn{margin-left:auto;border:3px solid var(--ink);background:#ff
 #farm{padding:12px}#fscene{width:100%;height:calc(100vh - 280px);height:calc(100dvh - 280px);min-height:300px;touch-action:none;border:3px solid var(--ink);border-radius:18px;display:block}.pc{transition:transform .25s;cursor:grab}.pc.dr{transition:none}`;
 document.head.append(css);
 const main=document.querySelector('main'),foot=document.querySelector('.foot');
-['home','kids','farm','prof'].forEach(id=>{const s=document.createElement('section');s.className='card hidden';s.id=id;main.insertBefore(s,foot)});
+['home','kids','farm','prof','games','gx','prog'].forEach(id=>{const s=document.createElement('section');s.className='card hidden';s.id=id;main.insertBefore(s,foot)});
 let ST=0;
 const show=id=>{stop();ST++;document.querySelectorAll('main>section.card').forEach(s=>s.classList.add('hidden'));$(id).classList.remove('hidden');scrollTo(0,0)};
 const al=(f,ms)=>{const id=ST;setTimeout(()=>{if(id===ST)f()},ms)};
@@ -445,7 +548,13 @@ const PT={
  roller:{n:'Walec',en:'road roller',e:'🛣️',away:1,dir:-1,p:[rc(80,70,90,40,'#ffb300',6),`<circle cx="60" cy="108" r="34" fill="#90a4ae" ${S3}/><circle cx="60" cy="108" r="12" fill="#546e7a" ${S3}/>`,rc(110,36,40,36,'#bfe9ff',5),rc(104,28,52,8,'#546e7a',3),wh(165,118,24)]},
  tank:{n:'Beczkowóz',en:'water tank',e:'💧',away:0,p:[`<ellipse cx="75" cy="78" rx="58" ry="28" fill="#1e88e5" ${S3}/><path d="M40 70c10-8 30-8 40-8" stroke="#90caf9" stroke-width="4" fill="none" stroke-linecap="round"/>`,rc(66,44,18,10,'#9e9e9e',3),rc(20,102,110,10,'#546e7a',3),wh(60,122,20),wh(110,126,16),rc(130,96,22,8,'#9e9e9e',3)]},
  baler:{n:'Prasa do słomy',en:'baler',e:'🌀',away:0,p:[rc(20,70,110,42,'#43a047',6),`<circle cx="100" cy="52" r="17" fill="#fdd835" ${S3}/><circle cx="100" cy="52" r="7" fill="none" stroke="#c9a400" stroke-width="2.5"/>`,wh(75,124,18),rc(4,92,22,18,'#9e9e9e',4),rc(130,96,22,8,'#9e9e9e',3)]},
- harrow:{n:'Brona',en:'harrow',e:'🪵',away:0,p:[rc(20,80,112,10,'#78909c',4),`<path d="M30 90l6 36 6-36M60 90l6 36 6-36M90 90l6 36 6-36" fill="#cfd8dc" ${S3} stroke-linejoin="round"/>`,rc(25,56,100,10,'#8d6e63',3)+`<path d="M40 66v14M105 66v14" stroke="#1f2a5a" stroke-width="3"/>`,wh(112,128,14),rc(130,96,22,8,'#9e9e9e',3)]}
+ harrow:{n:'Brona',en:'harrow',e:'🪵',away:0,p:[rc(20,80,112,10,'#78909c',4),`<path d="M30 90l6 36 6-36M60 90l6 36 6-36M90 90l6 36 6-36" fill="#cfd8dc" ${S3} stroke-linejoin="round"/>`,rc(25,56,100,10,'#8d6e63',3)+`<path d="M40 66v14M105 66v14" stroke="#1f2a5a" stroke-width="3"/>`,wh(112,128,14),rc(130,96,22,8,'#9e9e9e',3)]},
+ mower:{n:'Kosiarka rotacyjna',en:'rotary mower',e:'🌿',away:0,p:[rc(22,72,100,12,'#43a047',4),`<path d="M35 84l-10 30M60 84l-10 30M85 84l-10 30M110 84l-10 30" stroke="#9e9e9e" stroke-width="5" stroke-linecap="round"/>`,rc(32,48,82,12,'#8d6e63',4),wh(48,126,15),wh(112,126,15),rc(130,96,22,8,'#9e9e9e',3)]},
+ sprayer:{n:'Opryskiwacz',en:'sprayer',e:'🚿',away:0,p:[rc(52,48,62,48,'#fbc02d',8),rc(65,56,36,30,'#fff59d',5),`<path d="M20 58H145M20 58v16M145 58v16M20 74l-8 18M145 74l8 18" stroke="#546e7a" stroke-width="5" stroke-linecap="round"/>`,`<path d="M18 96l-5 10M30 96l-5 10M140 96l5 10M152 96l5 10" stroke="#1e88e5" stroke-width="3" stroke-linecap="round"/>`,wh(60,126,15),wh(112,126,15)]},
+ spreader:{n:'Rozsiewacz nawozu',en:'fertilizer spreader',e:'🌱',away:0,p:[`<path d="M34 42h82l-12 56H46z" fill="#43a047" ${S3} stroke-linejoin="round"/>`,rc(22,94,112,12,'#78909c',4),`<path d="M75 100v28M45 110l-18 18M105 110l18 18" stroke="#9e9e9e" stroke-width="5" stroke-linecap="round"/>`,`<circle cx="75" cy="116" r="17" fill="#fdd835" ${S3}/><path d="M75 99v34M58 116h34" stroke="#c9a400" stroke-width="3"/>`,wh(48,130,13),wh(112,130,13)]},
+ cultivator:{n:'Kultywator',en:'cultivator',e:'🚜',away:0,p:[rc(18,70,118,12,'#546e7a',4),`<path d="M30 82l-8 48M52 82l-8 48M74 82l-8 48M96 82l-8 48M118 82l-8 48" stroke="#cfd8dc" stroke-width="6" stroke-linecap="round"/>`,rc(24,48,108,10,'#8d6e63',3),`<path d="M30 48v-14M126 48V34" stroke="#546e7a" stroke-width="5"/>`,wh(115,126,14),rc(130,96,22,8,'#9e9e9e',3)]},
+ graintrailer:{n:'Przyczepa do zboża',en:'grain trailer',e:'🚛',away:0,p:[rc(18,60,116,52,'#d84315',6),`<path d="M25 60l12-22h80l12 22" fill="#fbc02d" ${S3} stroke-linejoin="round"/>`,`<path d="M30 72h92M30 86h92M30 100h92" stroke="#ffcc80" stroke-width="3"/>`,wh(48,126,17),wh(110,126,17),rc(130,96,22,8,'#9e9e9e',3)]},
+ forage:{n:'Sieczkarnia',en:'forage harvester',e:'🌽',away:1,dir:-1,p:[rc(72,62,112,48,'#fbc02d',6),rc(130,30,48,36,'#bfe9ff',5),`<path d="M72 76H18v42h54z" fill="#ef6c00" ${S3} stroke-linejoin="round"/><path d="M24 80v34M38 80v34M52 80v34" stroke="#1f2a5a" stroke-width="3"/>`,`<path d="M160 34l22-20 8 5-18 26" fill="none" stroke="#78909c" stroke-width="8" stroke-linecap="round"/>`,wh(145,120,24),wh(88,128,14)]}
 };
 const NT=[523,587,659,784,880,1047];
 function farmMenu(){show('farm');const F=$('farm');
@@ -533,17 +642,1018 @@ function setStart(u){const s=$('start');s.querySelector('.kind').textContent='TE
 function openUnit(u,g){window.UNIT=u;useUnit(u);L=0;terr=0;lvP=[];n=0;pts=0;wrong=[];T=u==2?gen2():gen();setStart(u);show('start');if(g)$('sPlay').click()}
 $('f3').onclick=()=>{T=window.UNIT==2?gen2():gen();L=0;terr=0;lvP=[];startLv()};
 
+/* ============================================================
+   ROZBUDOWA – WSPÓLNY SYSTEM POSTĘPÓW
+   Wszystko zapisuje się w tym samym profilu (localStorage eq_prof),
+   więc nowe moduły korzystają z istniejących wyników i profili.
+   ============================================================ */
+const PP=()=>P().p;
+const stAdd=v=>{if(!v)return;const p=PP();p.st=(p.st||0)+v;sv()};
+const learnW=k=>{if(!k)return;const p=PP();p['w_'+k]=1;sv()};
+const diffAdd=k=>{if(!k)return;const p=PP();p.diff=p.diff||{};p.diff[k]=(p.diff[k]||0)+1;sv()};
+const diffDel=k=>{const p=PP();if(p.diff&&p.diff[k]!=null){delete p.diff[k];sv()}};
+const histAdd=(t,l,m)=>{const p=PP();p.hist=(p.hist||[]).concat([{d:Date.now(),t:t,l:l,m:m||''}]).slice(-40);sv()};
+const wCount=()=>Object.keys(PP()).filter(k=>k.indexOf('w_')===0).length;
+const diffList=()=>Object.entries(PP().diff||{}).sort((a,b)=>b[1]-a[1]);
+window.eqRight=x=>{stAdd(1);learnW(x&&x.wk)};
+window.eqWrong=x=>{diffAdd(x&&x.wk)};
+window.eqFinish=(f,tot,all)=>{try{
+ const p=PP(),u=String(window.UNIT||1);
+ p['t_'+u]=1;
+ if(f)p['cr_'+u]=1;
+ sv();
+ histAdd(window.UNITNAME||('Unit '+u),(tot==null?'':(tot+'/'+all)),(f?'korona':''));
+}catch(e){}};
+
+/* --- pomocniki ekranów gier i dźwięków --- */
+const GX=()=>$('gxb');
+const GS=h=>{$('gxb').innerHTML=h;show('gx')};
+let TOA=null;
+const toast=t=>{let e=$('tst');if(!e){e=document.createElement('div');e.id='tst';e.className='toast';document.body.append(e)}
+ e.innerHTML=t;e.classList.add('on');clearTimeout(TOA);TOA=setTimeout(()=>e.classList.remove('on'),1700)};
+const snd1=(f,d=.15,v=.14)=>{try{tn(f,d,v)}catch(e){}};
+const sndS=(a,g=90)=>a.forEach((f,i)=>setTimeout(()=>snd1(f),i*g));
+const boopS=()=>snd1(180,.16,.18);
+const kaChingS=()=>sndS([1047,1319,1568],85);
+const honkS=()=>sndS([330,392,330],150);
+const chompS=()=>sndS([120,90,110],90);
+const GSTR=v=>stAdd(v||1);
+const gDone=k=>{const p=PP();p['g_'+k]=(p['g_'+k]||0)+1;sv()};
+const mount=(t,b)=>{GS('<div class="ah"><span class="kind">'+t+'</span></div>'+b+'<div class="acts"><button class="btn alt" id="gbk">◀ Wróć do menu gier</button></div>');$('gbk').onclick=()=>games();return GX()};
+const GKEYS=['apple','banana','orange','strawberry','grapes','pear'];
+const COLORS=['red','blue','yellow','green','pink','purple'];
+const HEX6={red:'#e53935',blue:'#1e88e5',yellow:'#fdd835',green:'#43a047',pink:'#f48fb1',purple:'#8e24aa'};
+const PL6={red:'czerwony',blue:'niebieski',yellow:'żółty',green:'zielony',pink:'różowy',purple:'fioletowy'};
+const P_SKIN='#ffd9b8';
+function gResult(k,t,s,note){
+ GS('<div style="text-align:center"><div style="font-size:3.4rem;letter-spacing:6px;margin:8px 0">'+'\u2b50'.repeat(s)+'\u2606'.repeat(3-s)+'</div><div class="rt">'+esc(t)+'</div><p style="font-weight:700;text-align:center;color:var(--mut)">'+esc(note||'')+'</p></div><div class="acts"><button class="btn go" id="r1">Zagraj jeszcze raz</button><button class="btn alt" id="r2">Menu gier</button></div>');
+ GSTR(s);gDone(k);histAdd(GN[k]||t,s+'/3',k);fan(s===3?1:0);boom(s*40);
+ $('r1').onclick=()=>{const f=GMAP[k];if(f)f();else games()};
+ $('r2').onclick=()=>games();
+}
+
+/* ============================================================
+   SŁOWNICTWO KLASY 1 – UNIT 1–6
+   ============================================================ */
+const CMDS=[['Touch your nose.','nose'],['Point to your eyes.','eyes'],['Clap your hands.','hands'],['Touch your head.','head'],['Touch your ears.','ears'],['Point to your mouth.','mouth'],['Touch your feet.','feet'],['Touch your hands.','hands']];
+const UVD={
+ 1:{n:'Unit 1 – School Things',qp:'What is it?',keep:1,w:[['pencil','pencil','ołówek'],['pen','pen','długopis'],['ruler','ruler','linijka'],['rubber','rubber','gumka'],['book','book','książka'],['bag','school bag','plecak']]},
+ 2:{n:'Unit 2 – Fruits and Colours',qp:'What is it?',keep:1,w:[['apple','apple','jabłko'],['banana','banana','banan'],['orange','orange','pomarańcza'],['strawberry','strawberry','truskawka'],['grapes','grapes','winogrona'],['pear','pear','gruszka'],['red','red','czerwony'],['blue','blue','niebieski'],['yellow','yellow','żółty'],['green','green','zielony'],['pink','pink','różowy'],['purple','purple','fioletowy']]},
+ 3:{n:'Unit 3 – Numbers and Toys',qp:'What is it?',num:1,w:[['ball','ball','piłka','\u26bd'],['doll','doll','lalka','\ud83e\udeb6'],['teddybear','teddy bear','miś','\ud83e\uddf8'],['car','car','samochód','\ud83d\ude97'],['train','train','pociąg','\ud83d\ude82'],['robot','robot','robot','\ud83e\udd16']]},
+ 4:{n:'Unit 4 – My Family',qp:'Who is this?',w:[['mum','mum','mama','\ud83d\udc69'],['dad','dad','tata','\ud83d\udc68'],['sister','sister','siostra','\ud83d\udc67'],['brother','brother','brat','\ud83d\udc66'],['grandma','grandma','babcia','\ud83d\udc75'],['grandpa','grandpa','dziadek','\ud83d\udc74']]},
+ 5:{n:'Unit 5 – Animals',qp:'What is it?',num:1,w:[['dog','dog','pies','\ud83d\udc36'],['cat','cat','kot','\ud83d\udc31'],['cow','cow','krowa','\ud83d\udc2e'],['horse','horse','koń','\ud83d\udc34'],['pig','pig','świnka','\ud83d\udc37'],['duck','duck','kaczka','\ud83e\udd86'],['rabbit','rabbit','królik','\ud83d\udc30'],['sheep','sheep','owca','\ud83d\udc11']]},
+ 6:{n:'Unit 6 – My Body',qp:'What is it?',w:[['head','head','głowa','\ud83e\uddd1'],['eyes','eyes','oczy','\ud83d\udc40',1],['ears','ears','uszy','\ud83d\udc42',1],['nose','nose','nos','\ud83d\udc43'],['mouth','mouth','usta','\ud83d\udc44'],['hands','hands','dłonie','\ud83e\udd32',1],['feet','feet','stopy','\ud83e\uddb6',1]]}
+};
+(()=>{const s=[];Object.values(UVD).forEach(U=>{if(U.keep)return;U.w.forEach(w=>{s.push('<symbol id="'+w[0]+'" viewBox="0 0 64 64"><text x="32" y="52" font-size="52" text-anchor="middle">'+w[3]+'</text></symbol>')})});
+ document.querySelector('svg defs').insertAdjacentHTML('beforeend',s.join(''))})();
+
+function setVocab2(v){
+ if(v===1||v===2){useUnit(v);return}
+ const list=v==='all'?[1,2,3,4,5,6]:[v],A={},B={},C={},K=[];
+ list.forEach(u=>UVD[u].w.forEach(w=>{const k=w[0];
+  if(A[k])return;
+  A[k]=NM[k]||w[1];B[k]=PL[k]||w[2];C[k]=an(A[k])+A[k];K.push(k)}));
+ [[NM,A],[PL,B],[N,C]].forEach(([o,src])=>{Object.keys(o).forEach(k=>{delete o[k]});Object.assign(o,src)});
+ KS.length=0;KS.push(...K);
+}
+/* ============================================================
+   GENERATOR ZADAŃ DLA UNIT 1–6
+   Dziewięć typów ćwiczeń: słuchanie, wybór obrazka, czytanie
+   globalne, brakująca litera, prawda/fałsz, liczenie,
+   usłuchaj i zrób, mów i powtarzaj, łączenie, pisownia.
+   ============================================================ */
+function mkU(u){
+ const U=UVD[u],W=U.w,KK=W.map(x=>x[0]);
+ const W1=()=>W[Math.random()*W.length|0];
+ const ENw=k=>NM[k]||k,PLw=k=>PL[k]||'';
+ const three=k=>shuf([k].concat(shuf(KK.filter(x=>x!==k)).slice(0,2)));
+ const isP=k=>{const f=W.filter(x=>x[0]===k)[0];return !!(f&&f[4])};
+ const sent=k=>{const en=ENw(k);
+  if(u===3)return 'I have '+an(en)+en+'.';
+  if(u===4)return 'This is my '+en+'.';
+  if(u===5)return 'It is '+an(en)+en+'.';
+  if(u===6)return isP(k)?('These are my '+en+'.'):('This is my '+en+'.');
+  return 'This is '+an(en)+en+'.'};
+ const base=(k,o,idx)=>({wd:k,wk:ENw(k),o:o,c:idx,w:cap(ENw(k))+' = '+PLw(k)+'.'});
+ const q={};
+ q.pick=()=>{const k=W1()[0],o=three(k);
+  return Object.assign({k:'pick',type:'SŁÓWKA',q:U.qp||'What is it?',p:'Co to jest? Wybierz angielskie słowo.',h:I(k,'ic big')},base(k,o.map(x=>cap(ENw(x))),o.indexOf(k)))};
+ q.listen=()=>{const k=W1()[0],o=three(k);
+  return Object.assign({k:'listen',type:'SŁUCHANIE',q:'Listen and choose.',p:'Dotknij głośniczka i wybierz obrazek.',s:ENw(k)},base(k,o,o.indexOf(k)))};
+ q.read=()=>{const k=W1()[0],o=three(k);
+  return Object.assign({k:'read',type:'CZYTANIE GLOBALNE',q:'Read and choose.',p:'Przeczytaj słowo i dotknij obrazka.',s:ENw(k),
+   h:'<span class="word" style="font-size:clamp(1.3rem,6vw,2rem)">'+ENw(k).toUpperCase()+'</span>'},base(k,o,o.indexOf(k)))};
+ q.letter=()=>{const cand=W.filter(x=>x[1].indexOf(' ')<0),src=cand.length?cand:W,k=src[Math.random()*src.length|0][0];
+  const w=ENw(k),i=Math.random()*w.length|0,ch=w[i],pool='abcdefghilmnoprstuwy'.split('').filter(x=>x!==ch),o=shuf([ch].concat(shuf(pool).slice(0,2)));
+  return Object.assign({k:'pick',type:'BRAKUJĄCA LITERA',q:'Which letter is missing?',p:'Jakiej litery brakuje w wyrazie?',
+   h:I(k,'ic')+'<span class="word" style="font-size:clamp(1.2rem,6vw,1.8rem)">'+(w.slice(0,i)+'_'+w.slice(i+1)).toUpperCase()+'</span>'},
+   base(k,o.map(x=>x.toUpperCase()),o.indexOf(ch)))};
+ q.tf=()=>{const k=W1()[0],yes=Math.random()<.5,alt=shuf(W.filter(x=>x[0]!==k))[0]||W1(),sub=yes?k:alt[0];
+  return Object.assign({k:'pick',type:'PRAWDA / FAŁSZ',q:'True or false?',p:'Posłuchaj zdania. Czy pasuje do obrazka?',h:I(k,'ic big'),say:sent(sub),
+   o:['TRUE — prawda','FALSE — fałsz'],c:yes?0:1,
+   w:'Na obrazku: '+PLw(k)+' ('+ENw(k)+'). Zdanie: „'+sent(sub)+'” — '+(yes?'prawda':'fałsz')+'.'},base(k,[],0))};
+ q.count=()=>{if(!U.num)return q.read();
+  const k=W1()[0],nn=1+Math.random()*10|0,o=shuf([nn].concat(oth(NUMS,nn,2)));
+  return Object.assign({k:'pick',type:'LICZENIE',q:'How many?',p:'Policz i wybierz właściwą liczbę.',
+   h:'<div class="crow">'+I(k,'ic').repeat(nn)+'</div>',o:o.map(x=>cap(NW[x])),c:o.indexOf(nn),w:nn+' = '+NW[nn]+'.'},base(k,[],0))};
+ q.do=()=>{
+  if(u===6){const c=CMDS[Math.random()*CMDS.length|0],key=c[1],o=three(key);
+   return Object.assign({k:'listen',type:'USŁUCHAJ I ZRÓB',q:'Listen and do.',p:'Posłuchaj polecenia i wskaż obrazek.',s:c[0]},
+    base(key,o,o.indexOf(key)))}
+  const k=W1()[0],o=three(k);
+  return Object.assign({k:'listen',type:'USŁUCHAJ I ZRÓB',q:'Listen and do.',p:'Posłuchaj polecenia i wskaż właściwy obrazek.',s:'Point to the '+ENw(k)+'.'},
+   base(k,o,o.indexOf(k)))};
+ q.rep=()=>{const k=W1()[0];
+  return Object.assign({k:'pick',rep:1,type:'MÓW I POWTARZAJ',q:'Speak and repeat.',p:'Posłuchaj i powiedz na głos, potem dotknij przycisku.',
+   h:I(k,'ic big')+'<div class="word" style="font-size:clamp(1.2rem,5.5vw,1.7rem)">'+ENw(k).toUpperCase()+'</div>',say:ENw(k),
+   o:['Powiedziałem! ✓'],c:0,w:cap(ENw(k))+' = '+PLw(k)+'. Powiedz to jeszcze raz na głos.'},base(k,[],0))};
+ q.match=()=>{const p=shuf(W).slice(0,4);
+  return{k:'match',type:'ŁĄCZENIE',q:'Match the words and pictures.',p:'Dotknij słowa, potem jego obrazka.',
+   pairs:p.map(x=>[ENw(x[0]),x[0]]),w:'Połączone pary!'}};
+ q.spell=()=>{const cand=W.filter(x=>x[1].indexOf(' ')<0&&x[1].length>2),src=cand.length?cand:W,k=src[Math.random()*src.length|0][0],w=ENw(k);
+  const c=new Set;
+  for(let i=0;i<w.length-1;i++)if(w[i]!==w[i+1])c.add(w.slice(0,i)+w[i+1]+w[i]+w.slice(i+2));
+  for(let i=0;i<w.length;i++)c.add(w.slice(0,i)+w.slice(i+1));
+  c.delete(w);
+  const o=shuf([w].concat(shuf([...c]).slice(0,2)));
+  return Object.assign({k:'pick',type:'PISOWNIA',q:'Which spelling is correct?',p:'Wybierz poprawnie napisane słowo.',h:I(k,'ic big')},
+   base(k,o.map(x=>x.toUpperCase()),o.indexOf(w)))};
+ return q;
+}
+function genU(u){
+ const m=mkU(u),has=!!UVD[u].num,t=t=>m[t]();
+ const A=['pick','listen','read','rep','letter','listen','pick','rep','letter','read','read','letter','pick','listen','rep'];
+ const B=['listen','tf','read','count','letter','pick','tf','listen','count','read','letter','tf','listen','read','count'];
+ const C=['tf','do','count','match','read','letter','do','tf','match','spell','count','do','read','letter','match'];
+ const fix=x=>(x==='count'&&!has)?'read':x;
+ return A.map(x=>t(fix(x))).concat(B.map(x=>t(fix(x))),C.map(x=>t(fix(x))));
+}
+function genMix(){
+ const G=[1,2,3,4,5,6].map(mkU);
+ const has=[1,2,3,4,5,6].map(u=>!!UVD[u].num);
+ const L1=['pick','listen','rep','letter','read'],L2=['listen','tf','read','count','letter','do'],L3=['tf','do','count','match','spell','read','letter'];
+ const lvl=l=>{const pool=l===1?L1:l===2?L2:L3,out=[];
+  while(out.length<15){
+   const gi=Math.random()*6|0,t=pool[Math.random()*pool.length|0];
+   const tt=(t==='count'&&!has[gi])?'read':t;
+   try{out.push(G[gi][tt]())}catch(e){out.push(G[gi].listen())}
+  }
+  return out};
+ return lvl(1).concat(lvl(2),lvl(3));
+}
+/* ============================================================
+   TESTY: UNIT 1–6, POWTÓRKA WSZYSTKICH DZIAŁÓW, EGZAMIN
+   ============================================================ */
+const TORDER=['1','2','3','4','5','6','rev','exam'];
+const TESTMETA={
+ '1':{kind:'TEST • UNIT 1',title:'Unit 1 – School Things',sub:'przybory szkolne, liczby 1–10, in/on',gen:()=>gen()},
+ '2':{kind:'TEST • UNIT 2',title:'Unit 2 – Fruits and Colours',sub:'owoce, kolory, prawda/fałsz, literki',gen:()=>gen2()},
+ '3':{kind:'TEST • UNIT 3',title:'Unit 3 – Numbers and Toys',sub:'zabawki, liczby, How many?, I have a...',gen:()=>genU(3)},
+ '4':{kind:'TEST • UNIT 4',title:'Unit 4 – My Family',sub:'mum, dad, sister, Who is this?',gen:()=>genU(4)},
+ '5':{kind:'TEST • UNIT 5',title:'Unit 5 – Animals',sub:'zwierzęta, It is a dog., liczenie',gen:()=>genU(5)},
+ '6':{kind:'TEST • UNIT 6',title:'Unit 6 – My Body',sub:'części ciała, Touch your nose., Clap',gen:()=>genU(6)},
+ 'rev':{kind:'POWTÓRKA',title:'Powtórka wszystkich działów',sub:'Unit 1–6 razem, nowy zestaw za każdym razem',gen:()=>genMix()},
+ 'exam':{kind:'EGZAMIN KOŃCOWY',title:'Egzamin końcowy klasy 1',sub:'wszystkie działy, 45 zadań, dyplom mistrza',gen:()=>genMix()}
+};
+let lastGen=null;
+function openTest(id){
+ const C=TESTMETA[id];if(!C)return;
+ lastGen=C.gen;
+ setVocab2(id==='1'?1:id==='2'?2:(id==='rev'||id==='exam')?'all':parseInt(id,10));
+ window.UNIT=id;window.UNITNAME=C.title;
+ L=0;terr=0;lvP=[];n=0;pts=0;wrong=[];T=lastGen();
+ const s=$('start');
+ s.querySelector('.kind').textContent=C.kind;
+ s.querySelector('h2').textContent=id==='exam'?'Wielki finał klasy 1!':id==='rev'?'Czas na powtórkę!':'Gotowi na sprawdzian?';
+ s.querySelector('p').textContent=C.title+': 45 zadań w 3 poziomach po 15. Dotknij żółtego głośniczka, a lektor przeczyta pytanie. Każde uruchomienie losuje nowy zestaw pytań i odpowiedzi.';
+ s.querySelector('.chips').innerHTML='<span>słuchanie</span><span>czytanie</span><span>mówienie</span><span>pisownia</span><span>'+C.sub+'</span>';
+ $('badge').classList.toggle('hidden',!PP()['cr_'+id]);
+ $('sPlay').textContent='Baw się i ucz';
+ show('start');
+}
+
+/* ============================================================
+   CENTRUM GIER – „BAW SIĘ I UCZ”
+   ============================================================ */
+const GN={shop:'Mały Sklep',robot:'Budowa Robota',farmR:'Ratuj Zwierzęta',treasure:'Poszukiwanie Skarbów',
+ wordF:'Fabryka Słów',memEng:'Memory English',rocket:'Kosmiczna Rakieta',dino:'Karmienie Dinozaura',
+ chef:'Potworna Pizzeria',balloon:'Balonowy Pop',wash:'Myjnia Maszyn',old2:'Gry Unit 1–2',
+ farm:'Fabryka Maszyn',kids:'Nauka 4–6'};
+const GMAP={shop:()=>gShop(),robot:()=>gRobot(),farmR:()=>gFarm(),treasure:()=>gTreasure(),wordF:()=>gWordF(),
+ memEng:()=>gMem(),rocket:()=>gRocket(),dino:()=>gDino(),chef:()=>gChef(),balloon:()=>gBalloon(),wash:()=>gWash(),
+ old2:()=>openUnit(2,1),farm:()=>farmMenu(),kids:()=>kidsMenu()};
+const GCAT=[
+ ['🛒 Słownictwo i mówienie',[['shop','🛒 Mały Sklep','Can I have an apple, please?'],['robot','🤖 Budowa Robota','Części ciała, kolory, polecenia'],['dino','🦖 Karmienie Dinozaura','Owoce i uprzejme prośby'],['balloon','🎈 Balonowy Pop','Kolory i słówka w ruchu']]],
+ ['🔤 Czytanie i pisanie',[['wordF','🏭 Fabryka Słów','Ułóż wyraz z rozsypanych liter'],['memEng','🃏 Memory English','Obrazek i słowo w parze'],['old2','🎲 Gry Unit 1–2','Memory, Łowca słówek, Literki']]],
+ ['🗺️ Przygody z angielskim',[['farmR','🐮 Ratuj Zwierzęta','Znajdź zwierzę, które usłyszysz'],['treasure','🏝️ Poszukiwanie Skarbów','Kolory, liczby, polecenia'],['rocket','🚀 Kosmiczna Rakieta','Kolory i liczenie paliwa'],['chef','🍕 Potworna Pizzeria','Zamówienia dla głodnego potwora']]],
+ ['🚜 Fabryka Maszyn (zachowana)',[['farm','🚜 Fabryka Maszyn','Złóż maszynę z części'],['wash','🧼 Umyjmy maszyny','Nowy tryb: gąbka, piana, prysznic']]],
+ ['🧸 Dla młodszych 4–6',[['kids','🧸 Nauka i zabawa 4–6','Liczby, kolory, zwierzątka, cienie']]]
+];
+function games(){
+ if(!DB.list.some(x=>x.id===DB.cur))return profs();
+ setVocab2('all');
+ show('games');
+ $('games').innerHTML='<span class="kind">BAW SIĘ I UCZ</span><div class="q">Co dziś gramy?</div><p class="hint">Wszystkie gry ćwiczą słownictwo z klasy 1 i zapisują gwiazdki w Twoim profilu.</p><div id="gg"></div>';
+ const box=$('gg');
+ GCAT.forEach(([t,items])=>{
+  box.insertAdjacentHTML('beforeend','<div class="sub">'+t+'</div><div class="gm two"></div>');
+  const g=box.lastChild;
+  items.forEach(([k,name,desc])=>{
+   const done=PP()['g_'+k]||0;
+   g.append(mkb('gc','<b>'+name+'</b><span>'+desc+(done?' • 🎯 '+done:'')+'</span>',GMAP[k]));
+  });
+ });
+ $('games').insertAdjacentHTML('beforeend','<div class="acts"><button class="btn alt" id="gprom">🏆 Moje postępy</button><button class="btn alt" id="ghome">⌂ Menu główne</button></div>');
+ $('gprom').onclick=()=>prog();
+ $('ghome').onclick=()=>home();
+}
+function kidsMenu(){
+ show('kids');
+ const K=$('kids');
+ K.innerHTML='<span class="kind">NAUKA I ZABAWA 4–6</span><div class="q">Wybierz zabawę</div><div class="gm"></div>';
+ const g=K.lastChild;
+ MQM.forEach(([e,t,s,k])=>g.append(mkb('gc','<b>'+e+' '+t+'</b><span>'+s+'</span>',()=>{show('kids');mini(k)})));
+ g.append(mkb('gc','<b>🃏 Memory malucha</b><span>Pary zwierząt i owoców</span>',()=>{show('kids');kmem()}));
+ K.append(mkb('btn alt','◀ Wróć do menu gier',()=>games()));
+}
+/* ---------- MAŁY SKLEP ---------- */
+function gShop(){
+ const TOT=5;let r=0,mis=0,need=[],lock=0,got=0,tot=0;
+ const plu=f=>f==='strawberry'?'strawberries':(f==='grapes'?'grapes':f+'s');
+ const txt=()=>need.map(x=>x.n===1?(an(x.f)+x.f):(NW[x.n]+' '+plu(x.f))).join(' and ');
+ const order=n=>{
+  if(n===0)return[{f:R1(GKEYS),n:1}];
+  if(n===1)return[{f:R1(GKEYS),n:2}];
+  if(n===2){const a=shuf(GKEYS);return[{f:a[0],n:1},{f:a[1],n:1}]}
+  if(n===3)return[{f:R1(GKEYS),n:3}];
+  const a=shuf(GKEYS);return[{f:a[0],n:2},{f:a[1],n:1}];
+ };
+ const pick=(f,b)=>{
+  if(lock)return;
+  const it=need.filter(x=>x.f===f)[0];
+  if(!it){mis++;boopS();b.classList.add('shake');setTimeout(()=>b.classList.remove('shake'),420);
+   toast('Klient prosi o: <b>'+txt()+'</b>');say('Try again, please.');return}
+  it.n--;if(!it.n)need=need.filter(x=>x.f!==f);
+  got++;kaChingS();learnW(f);
+  $('bitems').insertAdjacentHTML('beforeend','<span class="pop" style="display:inline-block;margin-right:4px">'+FEM[f]+'</span>');
+  $('bcnt').textContent=got+'/'+tot;
+  if(!need.length){lock=1;say('Thank you very much! Bye bye!');r++;al(next,1250)}
+  else say('Here you are!');
+ };
+ const next=()=>{
+  if(r>=TOT){
+   const s=mis<=1?3:mis<=4?2:1;
+   return gResult('shop',s===3?'Klient zachwycony!':(s===2?'Zakupy zrobione!':'Udało się!'),s,'Zamówienia: '+TOT+' • pomyłki: '+mis);
+  }
+  need=order(r);lock=0;got=0;tot=need.reduce((a,b)=>a+b.n,0);
+  mount('🛒 MAŁY SKLEP','<div class="hud"><span>Zamówienie '+Math.min(r+1,TOT)+'/'+TOT+'</span><span>Pomyłki: '+mis+'</span></div>'+
+   '<div class="shop"><div class="cust"><span class="ce">🐻</span><div class="bub" id="ord"></div></div>'+
+   '<div style="display:flex;justify-content:center;margin:8px 0"><button class="btn sm alt" id="rep">🔊 Posłuchaj jeszcze raz</button></div>'+
+   '<div class="shelf" id="shf"></div>'+
+   '<div class="basket"><span class="bl">🧺</span><div class="bitems" id="bitems"></div><span id="bcnt" style="font-weight:900;color:var(--mut)"></span></div></div>');
+  const line='Can I have '+txt()+', please?';
+  $('ord').textContent=line;
+  $('bcnt').textContent='0/'+tot;
+  $('rep').onclick=()=>say('Can I have '+txt()+', please?');
+  const shf=$('shf');
+  shuf(GKEYS).forEach(f=>{
+   const b=document.createElement('button');b.className='good2';
+   b.innerHTML='<span class="ge">'+FEM[f]+'</span><b>'+f+'</b>';
+   b.onclick=()=>pick(f,b);shf.append(b);
+  });
+  al(()=>say(line),320);
+ };
+ next();
+}
+
+/* ---------- BUDOWA ROBOTA ---------- */
+const ROBP={
+ leg:c=>'<rect x="116" y="230" width="26" height="70" rx="11" fill="'+c+'" stroke="#1f2a5a" stroke-width="3"/><rect x="158" y="230" width="26" height="70" rx="11" fill="'+c+'" stroke="#1f2a5a" stroke-width="3"/>',
+ arm:c=>'<rect x="74" y="140" width="28" height="80" rx="13" fill="'+c+'" stroke="#1f2a5a" stroke-width="3"/><rect x="198" y="140" width="28" height="80" rx="13" fill="'+c+'" stroke="#1f2a5a" stroke-width="3"/>',
+ head:c=>'<path d="M150 30V14" stroke="#1f2a5a" stroke-width="4"/><circle cx="150" cy="10" r="7" fill="'+c+'" stroke="#1f2a5a" stroke-width="3"/><circle cx="150" cy="74" r="44" fill="'+c+'" stroke="#1f2a5a" stroke-width="3"/>',
+ eyes:()=>'<circle cx="134" cy="66" r="11" fill="#fff" stroke="#1f2a5a" stroke-width="3"/><circle cx="166" cy="66" r="11" fill="#fff" stroke="#1f2a5a" stroke-width="3"/><circle cx="136" cy="68" r="4.5" fill="#1f2a5a"/><circle cx="168" cy="68" r="4.5" fill="#1f2a5a"/>',
+ nose:()=>'<path d="M150 80l-9 16h18z" fill="#ffb74d" stroke="#1f2a5a" stroke-width="3" stroke-linejoin="round"/>',
+ mouth:()=>'<path d="M132 102c6 11 30 11 36 0" fill="none" stroke="#1f2a5a" stroke-width="4" stroke-linecap="round"/>',
+ ears:c=>'<ellipse cx="102" cy="74" rx="9" ry="16" fill="'+c+'" stroke="#1f2a5a" stroke-width="3"/><ellipse cx="198" cy="74" rx="9" ry="16" fill="'+c+'" stroke="#1f2a5a" stroke-width="3"/>'
+};
+const ROBM={
+ leg:c=>'<rect x="16" y="4" width="12" height="54" rx="5" fill="'+c+'" stroke="#1f2a5a" stroke-width="3"/><rect x="36" y="4" width="12" height="54" rx="5" fill="'+c+'" stroke="#1f2a5a" stroke-width="3"/>',
+ arm:c=>'<rect x="14" y="4" width="12" height="54" rx="5" fill="'+c+'" stroke="#1f2a5a" stroke-width="3"/><rect x="38" y="4" width="12" height="54" rx="5" fill="'+c+'" stroke="#1f2a5a" stroke-width="3"/>',
+ head:c=>'<circle cx="32" cy="34" r="24" fill="'+c+'" stroke="#1f2a5a" stroke-width="3"/><circle cx="32" cy="6" r="5" fill="'+c+'" stroke="#1f2a5a" stroke-width="3"/>',
+ eyes:()=>'<circle cx="22" cy="32" r="8" fill="#fff" stroke="#1f2a5a" stroke-width="3"/><circle cx="42" cy="32" r="8" fill="#fff" stroke="#1f2a5a" stroke-width="3"/><circle cx="23" cy="33" r="3" fill="#1f2a5a"/><circle cx="43" cy="33" r="3" fill="#1f2a5a"/>',
+ nose:()=>'<path d="M32 30l-8 15h16z" fill="#ffb74d" stroke="#1f2a5a" stroke-width="3" stroke-linejoin="round"/>',
+ mouth:()=>'<path d="M20 40c4 9 20 9 24 0" fill="none" stroke="#1f2a5a" stroke-width="4" stroke-linecap="round"/>',
+ ears:c=>'<ellipse cx="10" cy="34" rx="6" ry="12" fill="'+c+'" stroke="#1f2a5a" stroke-width="3"/><ellipse cx="54" cy="34" rx="6" ry="12" fill="'+c+'" stroke="#1f2a5a" stroke-width="3"/>'
+};
+function gRobot(){
+ const SEQ=[['leg','legs'],['arm','arms'],['head','head'],['eyes','eyes'],['nose','nose'],['mouth','mouth'],['ears','ears']];
+ const body=R1(['#7c4dff','#14a38b','#ff6b4a']);
+ let i=0,mis=0;
+ const step=()=>{
+  if(i>=SEQ.length)return done();
+  const pid=SEQ[i][0],en=SEQ[i][1];
+  const canCol=pid==='arm'||pid==='leg'||pid==='head';
+  const cmode=canCol&&i%3===2;
+  const col=cmode?R1(COLORS):(pid==='arm'||pid==='leg'?R1(COLORS):'');
+  const hex=cmode?HEX6[col]:(pid==='arm'||pid==='leg'?HEX6[col]:P_SKIN);
+  const line=cmode?('Put the '+col+' '+en+' on the robot.'):('Now I need the '+en+'.');
+  $('rq').textContent=(i+1)+'/7';
+  $('rord').textContent=line;
+  $('rrep').onclick=()=>say(line);
+  al(()=>say(line),320);
+  learnW(en);
+  const tray=$('rtray');tray.innerHTML='';
+  let opts;
+  if(cmode){
+   const others=shuf(COLORS.filter(x=>x!==col)).slice(0,2);
+   opts=shuf([{id:pid,c:col,h:HEX6[col],ok:1}].concat(others.map(x=>({id:pid,c:x,h:HEX6[x],ok:0}))));
+  }else{
+   const others=shuf(SEQ.filter(s=>s[0]!==pid)).slice(0,2).map(s=>({id:s[0],c:'',h:pid==='eyes'||pid==='nose'||pid==='mouth'?P_SKIN:hex,ok:0}));
+   opts=shuf([{id:pid,c:'',h:hex,ok:1}].concat(others));
+  }
+  opts.forEach(o=>{
+   const b=document.createElement('button');b.className='part';
+   b.innerHTML='<svg viewBox="0 0 64 64">'+ROBM[o.id](o.h)+'</svg><span>'+o.id+(o.c?' '+o.c:'')+'</span>';
+   b.onclick=()=>{
+    if(o.ok){
+     b.disabled=true;b.style.opacity=.25;
+     $('placed').insertAdjacentHTML('beforeend','<g class="rpart">'+ROBP[pid](pid==='ears'?P_SKIN:hex)+'</g>');
+     sndS([200,150,120],70);boom(18);
+     i++;al(step,560);
+    }else{
+     mis++;$('rerr').textContent=mis;boopS();
+     b.classList.add('shake');setTimeout(()=>b.classList.remove('shake'),420);
+     say('Try again!');
+    }
+   };
+   tray.append(b);
+  });
+ };
+ const done=()=>{
+  $('rord').textContent='Beep beep! Robot gotowy!';
+  const tray=$('rtray');tray.innerHTML='<div style="grid-column:1/-1;text-align:center;font-weight:900;font-size:1.2rem">🎉 Gotowe! 🎉</div>';
+  $('rscene').classList.add('dance');
+  sndS([523,659,784,1047],110);fan(1);boom(110);say('I am a robot. Beep beep!');
+  const s=mis<=1?3:mis<=4?2:1;
+  al(()=>gResult('robot',s===3?'Robot złożony bezbłędnie!':'Robot gotowy!',s,'Pomyłki: '+mis),2900);
+ };
+ const start=()=>{
+  i=0;mis=0;
+  mount('🤖 BUDOWA ROBOTA','<div class="hud"><span>Część <b id="rq">1/7</b></span><span>Pomyłki: <b id="rerr">0</b></span></div>'+
+   '<div class="stage"><svg viewBox="0 0 300 340" id="rscene" role="img" aria-label="Robot do złożenia">'+
+   '<ellipse cx="150" cy="312" rx="78" ry="12" fill="rgba(0,0,0,.12)"/>'+
+   '<rect x="112" y="124" width="76" height="108" rx="20" fill="'+body+'" stroke="#1f2a5a" stroke-width="3"/>'+
+   '<rect x="126" y="146" width="48" height="34" rx="9" fill="#dcf6ef" stroke="#1f2a5a" stroke-width="3"/>'+
+   '<circle cx="140" cy="163" r="5" fill="#14a38b"/><circle cx="155" cy="163" r="5" fill="#ff6b4a"/><circle cx="166" cy="163" r="5" fill="#ffd54a"/>'+
+   '<rect x="96" y="118" width="108" height="14" rx="7" fill="'+body+'" stroke="#1f2a5a" stroke-width="3"/>'+
+   '<g id="placed"></g></svg></div>'+
+   '<div class="bub" id="rord" style="text-align:center;margin:10px auto;display:table"></div>'+
+   '<div style="display:flex;justify-content:center;margin:8px 0"><button class="btn sm alt" id="rrep">🔊 Posłuchaj polecenia</button></div>'+
+   '<div class="tray2" id="rtray"></div>');
+  step();
+ };
+ start();
+}
+/* ---------- RATUJ ZWIERZĘTA ---------- */
+function gFarm(){
+ const A6=[['dog','\ud83d\udc36','Woof'],['cat','\ud83d\udc31','Meow'],['cow','\ud83d\udc2e','Moo'],['horse','\ud83d\udc34','Neigh'],['pig','\ud83d\udc37','Oink'],['duck','\ud83e\udd86','Quack'],['sheep','\ud83d\udc11','Baa'],['rabbit','\ud83d\udc30','Hop']];
+ const TOT=6;let r=0,mis=0,resc=0,tg=null;
+ const hit=(a,b)=>{
+  if(!tg)return;
+  if(a[0]!==tg[0]){
+   mis++;boopS();b.style.outline='4px solid #ff6b4a';
+   setTimeout(()=>{b.style.outline=''},520);
+   toast('Szukamy: <b>'+tg[1]+' '+tg[0]+'</b>');
+   say('Try again!');
+   return;
+  }
+  const fld=$('fld'),rb=b.getBoundingClientRect(),rn=$('barn2').getBoundingClientRect();
+  b.style.transform='translate('+(rn.left-rb.left+20)+'px,'+(rn.top-rb.top+6)+'px) scale(.45)';
+  b.style.opacity='0';b.disabled=true;
+  for(let k=0;k<4;k++){
+   const d=document.createElement('span');d.className='dust';d.textContent='\ud83d\udca8';
+   d.style.left=(rb.left-rn.left+8+k*9)+'px';d.style.top=(rb.top-rn.top+24)+'px';
+   fld.append(d);setTimeout(()=>d.remove(),950);
+  }
+  resc++;sndS([660,880],90);learnW(tg[0]);
+  if(tg[2])speak(tg[2],null);else say('Help the '+tg[0]+'!');
+  r++;al(next,1000);
+ };
+ const next=()=>{
+  if(r>=TOT){
+   const s=mis<=1?3:mis<=4?2:1;
+   return gResult('farmR','Wszystkie zwierzęta w zagrodzie!',s,'Rundy: '+TOT+' • pomyłki: '+mis);
+  }
+  const soundMode=r%2===1&&r>0;
+  let pool=shuf(A6).slice(0,Math.min(3+r,8));
+  if(soundMode)pool=shuf(pool.concat(shuf(A6).slice(0,2))).slice(0,5);
+  tg=R1(pool);
+  mount('🐮 RATUJ ZWIERZĘTA','<div class="hud"><span>Runda '+Math.min(r+1,TOT)+'/'+TOT+'</span><span>\ud83d\udc3e Uratowane: '+resc+'</span></div>'+
+   '<div class="bub" id="ford" style="text-align:center;margin:8px auto;display:table"></div>'+
+   '<div style="display:flex;justify-content:center;margin:8px 0"><button class="btn sm alt" id="frep">\ud83d\udd0a Posłuchaj</button></div>'+
+   '<div class="farm2" id="fld"><span class="barn" id="barn2">\ud83c\udfe0</span></div>'+
+   '<p class="hint" style="text-align:center">Dotknij zwierzątko, które usłyszysz.</p>');
+  const line=soundMode?('Kto tak robi? '+tg[2]+'!'):('Help the '+tg[0]+'!');
+  $('ford').textContent=soundMode?'Posłuchaj odgłosu i znajdź zwierzę':line;
+  const rep=()=>{soundMode?speak(tg[2],null):say(line)};
+  $('frep').onclick=rep;
+  const fld=$('fld');
+  const cells=[[6,10],[58,4],[28,42],[68,44],[4,60],[48,62],[34,22],[74,24]];
+  shuf(cells).forEach((pos,idx)=>{
+   const a=pool[idx];if(!a)return;
+   const b=document.createElement('button');b.className='animal';
+   b.style.left=pos[0]+'%';b.style.top=pos[1]+'%';
+   b.textContent=a[1];b.setAttribute('aria-label',a[0]);
+   b.onclick=()=>hit(a,b);
+   fld.append(b);
+  });
+  al(rep,340);
+ };
+ next();
+}
+
+/* ---------- POSZUKIWANIE SKARBÓW ---------- */
+function gTreasure(){
+ const SH=['star','diamond','key','rock'];
+ const NAMEPL={star:'gwiazd',diamond:'diament',key:'klucz',rock:'kamień'};
+ const icon=(s,c)=>{
+  const f=HEX6[c]||'#888';
+  if(s==='star')return '<svg viewBox="0 0 40 40"><path d="M20 2l6 13 14 2-10 10 3 14-13-7-13 7 3-14L0 17l14-2z" fill="'+f+'" stroke="#1f2a5a" stroke-width="2.5" stroke-linejoin="round"/></svg>';
+  if(s==='diamond')return '<svg viewBox="0 0 40 40"><path d="M20 3l15 12-15 22L5 15z" fill="'+f+'" stroke="#1f2a5a" stroke-width="2.5" stroke-linejoin="round"/></svg>';
+  if(s==='key')return '<svg viewBox="0 0 40 40"><circle cx="13" cy="14" r="8" fill="none" stroke="'+f+'" stroke-width="5"/><path d="M19 20l13 13M26 29l4-4M30 33l4-4" stroke="'+f+'" stroke-width="5" stroke-linecap="round"/></svg>';
+  return '<svg viewBox="0 0 40 40"><path d="M6 30l6-18 14-4 8 14-8 10z" fill="'+f+'" stroke="#1f2a5a" stroke-width="2.5" stroke-linejoin="round"/></svg>';
+ };
+ const TOT=4;let q=0,mis=0,left=0,shape='',color='',lock=0;
+ const collect=(ok,b)=>{
+  if(lock)return;
+  if(!ok){
+   mis++;boopS();b.classList.add('shake');
+   setTimeout(()=>b.classList.remove('shake'),420);
+   toast('Szukamy: <b>'+color+' '+NAMEPL[shape]+(left>1?' × '+left:'')+'</b>');
+   say('Try again!');
+   return;
+  }
+  b.classList.add('got');setTimeout(()=>b.remove(),520);
+  sndS([880,1175],80);boom(20);left--;
+  if(left>0){$('tcnt').textContent=left;say('Well done!')}
+  else{
+   lock=1;$('tcnt').textContent='0';
+   $('chest').classList.add('open');
+   sndS([784,988,1175,1568],100);fan(1);boom(90);say('Treasure! Hooray!');
+   q++;al(next,1600);
+  }
+ };
+ const next=()=>{
+  if(q>=TOT){
+   const s=mis<=1?3:mis<=4?2:1;
+   return gResult('treasure','Skrzynia otwarta! Skarb zdobyty!',s,'Zadania: '+TOT+' • pomyłki: '+mis);
+  }
+  lock=0;
+  shape=R1(SH);color=R1(COLORS);
+  left=Math.random()<.45?1:(Math.random()<.6?2:3);
+  const items=[];
+  for(let i=0;i<left;i++)items.push({shape:shape,color:color,ok:1});
+  let guard=0;
+  while(items.length<10&&guard++<200){
+   const sh=R1(SH),co=R1(COLORS);
+   if(sh===shape&&co===color)continue;
+   items.push({shape:sh,color:co,ok:0});
+  }
+  const line=left===1?('Find the '+color+' '+shape+'.'):('Find '+NW[left]+' '+color+' '+shape+'s.');
+  mount('🏝️ POSZUKIWANIE SKARBÓW','<div class="hud"><span>Zadanie '+(q+1)+'/'+TOT+'</span><span>Do znalezienia: <b id="tcnt">'+left+'</b></span></div>'+
+   '<div class="bub" id="tord" style="text-align:center;margin:8px auto;display:table"></div>'+
+   '<div style="display:flex;justify-content:center;margin:8px 0"><button class="btn sm alt" id="trep">\ud83d\udd0a Posłuchaj polecenia</button></div>'+
+   '<div class="map2" id="map2"><span class="chest2" id="chest">\ud83e\uddf0</span></div>');
+  $('tord').textContent=line+' ('+color+' '+NAMEPL[shape]+')';
+  $('trep').onclick=()=>say(line);
+  const map=$('map2');
+  const cells=[[6,8],[28,4],[52,8],[74,4],[4,28],[26,26],[50,30],[74,26],[8,50],[30,48],[52,52],[74,48],[16,70],[40,68],[62,70],[76,66]];
+  shuf(cells).forEach((pos,i)=>{
+   const it=items[i];if(!it)return;
+   const b=document.createElement('button');b.className='spot';
+   b.style.left=pos[0]+'%';b.style.top=pos[1]+'%';
+   b.innerHTML=icon(it.shape,it.color);
+   b.setAttribute('aria-label',it.color+' '+it.shape);
+   b.onclick=()=>collect(it.ok,b);
+   map.append(b);
+  });
+  al(()=>say(line),340);
+ };
+ next();
+}
+
+/* ---------- FABRYKA SŁÓW ---------- */
+function gWordF(){
+ const WORDS=shuf(['apple','banana','grapes','pear','orange','pencil','robot','ball','train','sheep','duck','book','table','mouth','nose','hands','cat','dog','cow','green','yellow','purple','car','doll','eyes']).slice(0,6);
+ const TOT=WORDS.length;let i=0,mis=0;
+ const next=()=>{
+  if(i>=TOT){
+   const s=mis<=1?3:mis<=4?2:1;
+   return gResult('wordF','Fabryka wykonała wszystkie wyrazy!',s,'Wyrazy: '+TOT+' • pomyłki: '+mis);
+  }
+  const k=WORDS[i],w=NM[k].replace(/ /g,'');
+  const hint=i<2?'full':(i<4?'first':'none');
+  let pos=0;
+  const decoy=shuf('abcdefghijklmnoprstuwy'.split('').filter(c=>w.indexOf(c)<0)).slice(0,2);
+  const tiles=shuf(w.split('').concat(decoy));
+  const ghost=hint==='full'?w.toUpperCase():(hint==='first'?w[0].toUpperCase()+' '+'_ '.repeat(w.length-1).trim():'');
+  mount('🏭 FABRYKA SŁÓW','<div class="hud"><span>Wyraz '+(i+1)+'/'+TOT+'</span><span>Pomyłki: '+mis+'</span></div>'+
+   '<div class="hero">'+I(k,'ic big')+'</div>'+
+   '<div class="ghost" id="gh">'+ghost+'</div>'+
+   '<div class="belt2"><div class="beltrow" id="slots2"></div></div>'+
+   '<div class="beltrow" id="tiles2"></div>'+
+   '<div style="display:flex;justify-content:center;margin:10px 0"><button class="btn sm alt" id="wrep">\ud83d\udd0a Posłuchaj słowa</button></div>');
+  $('wrep').onclick=()=>say(NM[k]);
+  const sl=$('slots2'),tl=$('tiles2');
+  for(let j=0;j<w.length;j++){const d=document.createElement('div');d.className='slot2';sl.append(d)}
+  tiles.forEach(ch=>{
+   const b=document.createElement('button');b.className='tile2';b.textContent=ch;
+   b.onclick=()=>{
+    if(ch===w[pos]){
+     sl.children[pos].textContent=ch;
+     b.classList.add('used');b.disabled=true;pos++;
+     snd1(700+pos*45,.1);
+     if(pos===w.length){
+      sndS([784,988,1175],100);boom(45);say(w);
+      i++;al(next,1700);
+     }
+    }else{
+     mis++;boopS();b.classList.add('shake');
+     setTimeout(()=>b.classList.remove('shake'),420);
+     toast(hint==='none'?'Jaka będzie następna litera?':'Następna litera to <b>'+w[pos].toUpperCase()+'</b>');
+    }
+   };
+   tl.append(b);
+  });
+  al(()=>say(NM[k]),340);
+ };
+ next();
+}
+
+/* ---------- MEMORY ENGLISH ---------- */
+function gMem(){
+ let a=null,lk=0,mv=0,ok=0;
+ const ks=shuf(KS).slice(0,6);
+ mount('🃏 MEMORY ENGLISH','<div class="hud"><span>Ruchy: <b id="mmv">0</b></span><span>Pary: <b id="mok">0</b>/6</span></div>'+
+  '<p class="hint" style="text-align:center">Połącz obrazek z angielskim słowem.</p><div class="mem" id="mboard"></div>');
+ const bd=$('mboard');
+ shuf(ks.map(k=>[k,0]).concat(ks.map(k=>[k,1]))).forEach(pair=>{
+  const k=pair[0],isWord=pair[1];
+  const b=document.createElement('button');b.className='mc';
+  b.onclick=()=>{
+   if(lk||b.classList.contains('up')||b.classList.contains('ok'))return;
+   b.classList.add('up');
+   b.innerHTML=isWord?('<span style="font-size:clamp(.62rem,2.9vw,.95rem);line-height:1.1">'+NM[k].toUpperCase()+'</span>'):I(k);
+   if(isWord)say(NM[k]);
+   if(!a){a=[b,k,isWord];return}
+   mv++;$('mmv').textContent=mv;
+   const p=a[0],pk=a[1],pw=a[2];a=null;
+   if(pk===k&&pw!==isWord){
+    p.classList.add('ok');b.classList.add('ok');ok++;
+    $('mok').textContent=ok;learnW(NM[k]);sndS([784,1047],90);
+    if(ok===6){
+     const s=mv<=9?3:mv<=14?2:1;
+     fan(1);boom(80);say('Well done!');
+     al(()=>gResult('memEng','Wszystkie pary odnalezione!',s,'Ruchy: '+mv),1100);
+    }
+   }else{
+    lk=1;boopS();
+    al(()=>{p.classList.remove('up');b.classList.remove('up');p.innerHTML='';b.innerHTML='';lk=0},1000);
+   }
+  };
+  bd.append(b);
+ });
+}
+/* ---------- KOSMICZNA RAKIETA ---------- */
+function gRocket(){
+ const TOT=3;let r=0,mis=0,need=0,color='',phase='fuel',drops=0;
+ const order=()=>{
+  if(phase==='fuel')return 'Add '+color+' fuel!';
+  if(phase==='drops')return 'Add '+NW[need]+' drops of '+color+' fuel!';
+  return 'Three, two, one. Blast off!';
+ };
+ const dots=()=>{
+  const d=$('drp');if(!d)return;
+  d.innerHTML='';
+  for(let i=0;i<need;i++){const e=document.createElement('i');if(i<drops)e.className='on';d.append(e)}
+ };
+ const blast=()=>{
+  phase='count';
+  const cd=$('cdn'),rk=$('rk'),go=$('go');
+  if(go)go.classList.add('hidden');
+  if(cd)cd.classList.remove('hidden');
+  const seqv=['3','2','1','BLAST OFF!'];
+  let k=0;
+  const tick=()=>{
+   if(k>=seqv.length){
+    if(cd)cd.classList.add('hidden');
+    if(rk)rk.classList.add('go');
+    const fl=$('flm');if(fl)fl.classList.add('on');
+    sndS([400,600,900,1300],110);boom(110);fan(1);
+    say('Blast off! Hooray!');
+    r++;al(next,2700);
+    return;
+   }
+   const v=seqv[k++];
+   if(cd)cd.textContent=v;
+   snd1(k<4?260+k*90:1400,.18);
+   speak(v==='BLAST OFF!'?'Blast off!':v,null);
+   setTimeout(tick,1000);
+  };
+  tick();
+ };
+ const drop=()=>{
+  if(phase!=='drops')return;
+  drops++;dots();snd1(360+drops*80,.12);
+  if(drops>=need){
+   phase='count';
+   $('go').classList.add('hidden');
+   say('Fuel ready!');
+   al(blast,500);
+  }
+ };
+ const next=()=>{
+  if(r>=TOT){
+   const s=mis<=1?3:mis<=4?2:1;
+   return gResult('rocket',s===3?'Start bezbłędny!':'Rakieta w kosmosie!',s,'Etapy: '+TOT+' • pomyłki: '+mis);
+  }
+  phase='fuel';drops=0;need=2+(r%2);color=R1(COLORS);
+  mount('🚀 KOSMICZNA RAKIETA','<div class="hud"><span>Etap '+(r+1)+'/'+TOT+'</span><span>Pomyłki: '+mis+'</span></div>'+
+   '<div class="rkstage" id="rks"><span class="rk" id="rk">🚀<span class="flame" id="flm">🔥</span></span><div class="cdown hidden" id="cdn"></div></div>'+
+   '<div class="bub" id="rord" style="text-align:center;margin:8px auto;display:table"></div>'+
+   '<div style="display:flex;justify-content:center;margin:8px 0"><button class="btn sm alt" id="rrep">🔊 Posłuchaj polecenia</button></div>'+
+   '<div class="tanks" id="tks"></div>'+
+   '<div class="drops" id="drp"></div>'+
+   '<div class="acts" style="justify-content:center"><button class="btn go hidden" id="go">💧 Dodaj kroplę</button></div>');
+  $('rord').textContent=order();
+  $('rrep').onclick=()=>say(order());
+  $('go').onclick=drop;
+  const tks=$('tks');
+  const opts=shuf([color].concat(shuf(COLORS.filter(c=>c!==color)).slice(0,2)));
+  opts.forEach(c=>{
+   const b=document.createElement('button');b.className='tank';
+   b.innerHTML='<i style="background:'+HEX6[c]+'"></i><b>'+c+'</b>';
+   b.onclick=()=>{
+    if(phase!=='fuel')return;
+    if(c!==color){
+     mis++;boopS();b.classList.add('shake');setTimeout(()=>b.classList.remove('shake'),420);
+     toast('Potrzebujemy paliwa: <b>'+color+'</b>');say('Try again!');return;
+    }
+    sndS([220,300],90);learnW(color);
+    phase='drops';
+    $('rord').textContent=order();
+    $('rrep').onclick=()=>say(order());
+    say(order());
+    Array.prototype.forEach.call(tks.querySelectorAll('.tank'),x=>{x.disabled=true;x.style.opacity=.35});
+    const go=$('go');go.classList.remove('hidden');go.textContent='💧 Dodaj kroplę ('+color+')';
+    dots();
+   };
+   tks.append(b);
+  });
+  al(()=>say(order()),340);
+ };
+ next();
+}
+/* ---------- KARMIENIE DINOZAURA ---------- */
+function gDino(){
+ const TOT=6;let r=0,mis=0;
+ const next=()=>{
+  if(r>=TOT){
+   const s=mis<=1?3:mis<=4?2:1;
+   return gResult('dino',s===3?'Dinozaur najedzony i szczęśliwy!':'Dinozaur najedzony!',s,'Zamówienia: '+TOT+' • pomyłki: '+mis);
+  }
+  const f=R1(GKEYS);
+  const n=Math.random()<.6?1:(Math.random()<.7?2:3);
+  const plu=x=>x==='strawberry'?'strawberries':(x==='grapes'?'grapes':x+'s');
+  const line=n===1?('Give me '+an(f)+f+', please!'):('Give me '+NW[n]+' '+plu(f)+', please!');
+  mount('🦖 KARMIENIE DINOZAURA','<div class="hud"><span>Zamówienie '+(r+1)+'/'+TOT+'</span><span>Pomyłki: '+mis+'</span></div>'+
+   '<span class="dino" id="dn">🦖</span>'+
+   '<div class="bub" id="dord" style="text-align:center;margin:10px auto;display:table"></div>'+
+   '<div style="display:flex;justify-content:center;margin:8px 0"><button class="btn sm alt" id="drep">🔊 Posłuchaj jeszcze raz</button></div>'+
+   '<div class="shelf" id="dshf"></div>');
+  $('dord').textContent=line;
+  $('drep').onclick=()=>say(line);
+  const shf=$('dshf');
+  shuf(GKEYS).forEach(x=>{
+   const b=document.createElement('button');b.className='good2';
+   b.innerHTML='<span class="ge">'+FEM[x]+'</span><b>'+x+'</b>';
+   b.onclick=()=>{
+    if(x!==f){
+     mis++;boopS();b.classList.add('shake');setTimeout(()=>b.classList.remove('shake'),420);
+     const d=$('dn');d.classList.add('no');setTimeout(()=>d.classList.remove('no'),400);
+     toast('Dinozaur prosi o: <b>'+f+'</b>');say('Bleh! Try again!');return;
+    }
+    [...shf.children].forEach(c=>c.disabled=true);
+    const d=$('dn');d.textContent='🦖🍽️';d.classList.add('yum');
+    chompS();learnW(f);boom(30);
+    say('Chomp chomp! Yummy!');
+    r++;al(next,1300);
+   };
+   shf.append(b);
+  });
+  al(()=>say(line),340);
+ };
+ next();
+}
+
+/* ---------- POTWORNA PIZZERIA ---------- */
+function gChef(){
+ const TOT=4;let r=0,mis=0;
+ const next=()=>{
+  if(r>=TOT){
+   const s=mis<=1?3:mis<=4?2:1;
+   return gResult('chef',s===3?'Potwór najedzony, pizza idealna!':'Pizza podana!',s,'Pizze: '+TOT+' • pomyłki: '+mis);
+  }
+  const f=R1(GKEYS);
+  const n=Math.random()<.55?1:(Math.random()<.65?2:3);
+  const plu=x=>x==='strawberry'?'strawberries':(x==='grapes'?'grapes':x+'s');
+  const line=n===1?('One '+f+' pizza, please!'):(NW[n]+' '+plu(f)+' pizza, please!');
+  let added=0,baked=0;
+  mount('🍕 POTWORNA PIZZERIA','<div class="hud"><span>Pizza '+(r+1)+'/'+TOT+'</span><span>Pomyłki: '+mis+'</span></div>'+
+   '<span class="mon2" id="mon">👾</span>'+
+   '<div class="bub" id="cord" style="text-align:center;margin:10px auto;display:table"></div>'+
+   '<div style="display:flex;justify-content:center;margin:8px 0"><button class="btn sm alt" id="crep">🔊 Posłuchaj zamówienia</button></div>'+
+   '<div class="pizza" id="pz"></div>'+
+   '<div class="shelf" id="cshf"></div>'+
+   '<div class="oven" id="ov">Piekarnik: <b id="ovn">0</b>/'+n+' składników</div>'+
+   '<div class="acts" style="justify-content:center"><button class="btn go hidden" id="bake">🔥 Piecz pizzę!</button></div>');
+  $('cord').textContent=line;
+  $('crep').onclick=()=>say(line);
+  $('ovn').textContent='0';
+  const shf=$('cshf'),pz=$('pz');
+  shuf(GKEYS).forEach(x=>{
+   const b=document.createElement('button');b.className='good2';
+   b.innerHTML='<span class="ge">'+FEM[x]+'</span><b>'+x+'</b>';
+   b.onclick=()=>{
+    if(baked)return;
+    if(x!==f){
+     mis++;boopS();b.classList.add('shake');setTimeout(()=>b.classList.remove('shake'),420);
+     toast('Potwór chce: <b>'+f+'</b>');say('Bleh! Try again!');return;
+    }
+    if(added>=n)return;
+    added++;snd1(300+added*120,.12);learnW(f);
+    const t=document.createElement('span');t.className='top';t.textContent=FEM[x];
+    t.style.left=(30+Math.random()*40)+'%';t.style.top=(30+Math.random()*40)+'%';
+    pz.append(t);
+    $('ovn').textContent=added;
+    if(added>=n){$('bake').classList.remove('hidden');$('ov').classList.add('on');say('Bake it, please!')}
+    else say('More, please!');
+   };
+   shf.append(b);
+  });
+  $('bake').onclick=()=>{
+   if(baked)return;baked=1;
+   $('bake').classList.add('hidden');
+   sndS([500,650,800],90);boom(40);
+   const m=$('mon');m.textContent='👾🍕';
+   say('Om nom nom! Delicious!');
+   chompS();
+   r++;al(next,1600);
+  };
+  al(()=>say(line),340);
+ };
+ next();
+}
+
+/* ---------- BALONOWY POP ---------- */
+function gBalloon(){
+ const TOT=8;let r=0,mis=0,busy=0;
+ const next=()=>{
+  if(r>=TOT){
+   const s=mis<=1?3:mis<=4?2:1;
+   return gResult('balloon',s===3?'Wszystkie balony trafione!':'Świetne strzelanie!',s,'Balony: '+TOT+' • pomyłki: '+mis);
+  }
+  const useWord=Math.random()<.4;
+  const k=R1(GKEYS.concat(['dog','cat','ball','robot','mum','nose']));
+  const c=R1(COLORS);
+  const line=useWord?('Pop the balloon with the '+NM[k]+'!'):('Pop the '+c+' balloon!');
+  mount('🎈 BALONOWY POP','<div class="hud"><span>Balon '+(r+1)+'/'+TOT+'</span><span>Pomyłki: '+mis+'</span></div>'+
+   '<div class="bub" id="bord" style="text-align:center;margin:8px auto;display:table"></div>'+
+   '<div style="display:flex;justify-content:center;margin:8px 0"><button class="btn sm alt" id="brep">🔊 Posłuchaj polecenia</button></div>'+
+   '<div class="sky" id="sky"></div>'+
+   '<div class="acts" style="justify-content:center"><button class="btn alt hidden" id="bskip">Następny balon ▶</button></div>');
+  $('bord').textContent=line;
+  $('brep').onclick=()=>say(line);
+  busy=0;
+  const sky=$('sky');
+  const targets=shuf(COLORS).slice(0,4).map(x=>({word:'',color:x,ok:useWord?0:(x===c?1:0)}));
+  if(!useWord){
+   if(!targets.some(t=>t.ok))targets[0]={word:'',color:c,ok:1};
+   else targets.forEach(t=>{t.ok=(t.color===c)?1:0});
+  }else{
+   const words=shuf(GKEYS.concat(['dog','cat','ball','robot','mum','nose'])).slice(0,4);
+   targets.length=0;
+   words.forEach(w=>targets.push({word:w,color:R1(COLORS),ok:w===k?1:0}));
+   if(!targets.some(t=>t.ok)){targets[0]={word:k,color:R1(COLORS),ok:1}}
+  }
+  const dur=9+Math.random()*2;
+  targets.forEach((t,i)=>{
+   const b=document.createElement('button');b.className='bal';
+   b.style.left=(6+i*22)+'%';
+   b.style.background=t.color?HEX6[t.color]:'#bbb';
+   b.style.animationDuration=dur+'s';
+   b.style.animationDelay=(i*1.1)+'s';
+   b.innerHTML='<span>'+(t.word?NM[t.word]:t.color)+'</span>';
+   b.onclick=()=>{
+    if(busy||b.classList.contains('pop'))return;
+    if(t.ok)okPop(b);else badPop(b);
+   };
+   sky.append(b);
+  });
+  $('bskip').onclick=()=>{r++;next()};
+  al(()=>say(line),340);
+ };
+ const okPop=b=>{
+  busy=1;b.classList.add('pop');snd1(900,.12);boom(35);learnW('balloon');
+  say('Pop! Well done!');r++;
+  const sk=$('bskip');if(sk)sk.classList.remove('hidden');
+  al(next,1400);
+ };
+ const badPop=b=>{
+  mis++;boopS();b.style.outline='4px solid #ff6b4a';
+  setTimeout(()=>{b.style.outline=''},500);
+  say('Try again!');
+  toast('To nie ten balon. Posłuchaj jeszcze raz.');
+ };
+ next();
+}
+
+/* ---------- UMYJMY MASZYNY ---------- */
+function gWash(){
+ const VEH={tractor:{e:'🚜',n:'traktor',name:'tractor'},combine:{e:'🌾',n:'kombajn',name:'combine harvester'},
+  truck:{e:'🚚',n:'ciężarówka',name:'truck'},bus:{e:'🚌',n:'autobus',name:'bus'}};
+ const PARTS=[['wheels','koła'],['window','szyby'],['hood','maskę'],['roof','dach'],['door','drzwi']];
+ const TOT=3;let r=0,mis=0;
+ const next=()=>{
+  if(r>=TOT){
+   const s=mis<=1?3:mis<=4?2:1;
+   return gResult('wash',s===3?'Wszystkie maszyny lśnią!':'Maszyny umyte!',s,'Mycia: '+TOT+' • pomyłki: '+mis);
+  }
+  const vk=R1(Object.keys(VEH)),V=VEH[vk];
+  const order=shuf(PARTS).slice(0,3);
+  let step=0,washDone=0;
+  const col=R1(COLORS);
+  mount('🧼 UMYJMY MASZYNY','<div class="hud"><span>Pojazd '+(r+1)+'/'+TOT+'</span><span>Pomyłki: '+mis+'</span></div>'+
+   '<div class="bub" id="word" style="text-align:center;margin:8px auto;display:table"></div>'+
+   '<div style="display:flex;justify-content:center;margin:8px 0"><button class="btn sm alt" id="wrep2">🔊 Posłuchaj polecenia</button></div>'+
+   '<div class="stage" id="wst" style="position:relative"><svg viewBox="0 0 300 220" id="wsvg" role="img" aria-label="Ubłocony pojazd">'+
+   '<rect width="300" height="220" fill="#dff3ff"/><rect y="170" width="300" height="50" fill="#b5e2a1"/>'+
+   '<text x="150" y="130" font-size="110" text-anchor="middle" id="vem">'+V.e+'</text>'+
+   '<circle class="mud" data-p="wheels" cx="100" cy="150" r="22" fill="#7a5b3a" opacity=".85"/>'+
+   '<circle class="mud" data-p="wheels" cx="205" cy="150" r="22" fill="#7a5b3a" opacity=".85"/>'+
+   '<rect class="mud" data-p="window" x="118" y="62" width="64" height="32" rx="6" fill="#7a5b3a" opacity=".8"/>'+
+   '<rect class="mud" data-p="hood" x="70" y="118" width="160" height="22" rx="8" fill="#7a5b3a" opacity=".8"/>'+
+   '<rect class="mud" data-p="roof" x="112" y="48" width="76" height="14" rx="7" fill="#7a5b3a" opacity=".8"/>'+
+   '<rect class="mud" data-p="door" x="188" y="96" width="26" height="26" rx="5" fill="#7a5b3a" opacity=".8"/>'+
+   '</svg></div>'+
+   '<p class="hint" style="text-align:center">Dotknij gąbką miejsca, o które prosi lektor. Piana sama się nie zmyje!</p>'+
+   '<div class="acts" style="justify-content:center"><button class="btn go hidden" id="shower">🚿 Prysznic!</button></div>');
+  const cur=()=>{
+   const p=order[step];
+   return 'Wash the '+p[0]+'!';
+  };
+  const prompt=()=>{
+   if(step>=order.length){
+    $('word').textContent='Wszystko w pianie! Włącz prysznic!';
+    $('shower').classList.remove('hidden');
+    say('Great job! Now use the shower!');
+    return;
+   }
+   $('word').textContent=cur()+' ('+order[step][1]+')';
+   say(cur());
+  };
+  $('wrep2').onclick=()=>say(step>=order.length?'All clean!':cur());
+  const st=$('wst');
+  st.addEventListener('click',ev=>{
+   const t=ev.target;
+   if(!t.classList.contains('mud'))return;
+   if(step>=order.length)return;
+   const want=order[step][0];
+   if(t.dataset.p!==want){
+    mis++;boopS();toast('Teraz myjemy: <b>'+order[step][1]+'</b>');say('Try again!');return;
+   }
+   const r2=st.getBoundingClientRect();
+   for(let i=0;i<3;i++){
+    const f=document.createElement('span');f.className='foam';f.textContent='🫧';
+    f.style.position='absolute';
+    f.style.left=(ev.clientX-r2.left-10+i*12)+'px';
+    f.style.top=(ev.clientY-r2.top-10)+'px';
+    st.append(f);setTimeout(()=>f.remove(),820);
+   }
+   snd1(760,.12);snd1(980,.1);
+   t.style.transition='opacity .3s';t.style.opacity='.18';
+   washDone++;step++;prompt();
+  });
+  $('shower').onclick=()=>{
+   $('shower').classList.add('hidden');
+   const v=$('vem');if(v)v.classList.add('shine');
+   sndS([700,900,1100,1300],90);honkS();boom(70);fan(0);
+   say('Sparkling clean! Bip bip!');
+   Array.prototype.forEach.call(document.querySelectorAll('.mud'),m=>{m.style.opacity='0'});
+   r++;al(next,2400);
+  };
+  al(prompt,340);
+ };
+ next();
+}
+/* ANCHOR-E */
+
+/* ============================================================
+   PANEL POSTĘPÓW: gwiazdki, odznaki, korony, trudne słówka
+   ============================================================ */
+const TESTS4PROG=[['1','Unit 1'],['2','Unit 2'],['3','Unit 3'],['4','Unit 4'],['5','Unit 5'],['6','Unit 6'],['rev','Powtórka'],['exam','Egzamin']];
+function prog(){
+ if(!DB.list.some(x=>x.id===DB.cur))return profs();
+ const p=PP(),st=p.st||0,wc=wCount(),dl=diffList();
+ const cr=Object.keys(p).filter(k=>k.indexOf('cr_')===0&&p[k]).length;
+ const gm=Object.keys(p).filter(k=>k.indexOf('g_')===0&&p[k]).length;
+ const testDone=TESTS4PROG.filter(t=>p['t_'+t[0]]).length;
+ const badge=(ok,e,t,d)=>'<div class="badge2'+(ok?'':' lock')+'"><i>'+e+'</i><b>'+t+'</b><span>'+d+'</span></div>';
+ show('prog');
+ $('prog').innerHTML='<span class="kind">🏆 MOJE POSTĘPY</span>'+
+  '<div class="q">'+esc(P().e)+' '+esc(P().n)+'</div>'+
+  '<div class="pgrid">'+
+  '<div class="pbox"><b>'+st+'</b><span>gwiazdek</span></div>'+
+  '<div class="pbox"><b>'+wc+'</b><span>poznanych słów</span></div>'+
+  '<div class="pbox"><b>'+cr+'</b><span>koron</span></div>'+
+  '<div class="pbox"><b>'+gm+'</b><span>gier ukończonych</span></div>'+
+  '</div>'+
+  '<div class="sub">Testy i działy</div><div id="tlist"></div>'+
+  '<div class="sub">Odznaki</div><div class="bgrid" id="bgl"></div>'+
+  '<div class="sub">Trudne słówka do powtórki</div><div class="wlist" id="dlist"></div>'+
+  '<div class="sub">Ostatnie wyniki</div><div class="hist" id="hist"></div>'+
+  '<div class="acts"><button class="btn go" id="pb1">Ucz się dalej</button><button class="btn alt" id="pb2">Gry i zabawa</button><button class="btn alt" id="pb3">Menu główne</button></div>';
+ const tl=$('tlist');
+ TESTS4PROG.forEach(t=>{
+  const done=p['t_'+t[0]];
+  const row=document.createElement('div');row.className='prow';
+  row.innerHTML='<span>'+t[1]+'</span><div class="pb"><i style="width:'+(done?100:0)+'%"></i></div><span>'+(done?'✓':'—')+'</span>';
+  tl.append(row);
+ });
+ const bg=$('bgl');
+ bg.insertAdjacentHTML('beforeend',badge(st>=10,'⭐','Pierwsza gwiazdka','10 gwiazdek'));
+ bg.insertAdjacentHTML('beforeend',badge(st>=60,'🌟','Zbieracz gwiazdek','60 gwiazdek'));
+ bg.insertAdjacentHTML('beforeend',badge(wc>=10,'📚','Mały słownik','10 słówek'));
+ bg.insertAdjacentHTML('beforeend',badge(wc>=25,'📖','Słownikowy mistrz','25 słówek'));
+ bg.insertAdjacentHTML('beforeend',badge(cr>=1,'👑','Pierwsza korona','bezbłędny test'));
+ bg.insertAdjacentHTML('beforeend',badge(gm>=3,'🎮','Gracz','3 gry'));
+ bg.insertAdjacentHTML('beforeend',badge(nb(P())>=1,'🚜','Mechanik','złóż maszynę'));
+ bg.insertAdjacentHTML('beforeend',badge(Object.keys(p).some(k=>k.indexOf('f_')===0),'🧼','Myjnia','umyj maszynę'));
+ bg.insertAdjacentHTML('beforeend',badge(p['g_wash'],'🫧','Błysk','tryb mycia'));
+ bg.insertAdjacentHTML('beforeend',badge(st>=120,'🏅','Mistrz klasy 1','120 gwiazdek'));
+ const wl=$('dlist');
+ if(!dl.length)wl.innerHTML='<p class="hint">Brawo! Nie masz trudnych słówek. Graj dalej, a lista sama się uzupełni.</p>';
+ else dl.slice(0,12).forEach(([k,n])=>{
+  const b=document.createElement('button');b.className='wrow';
+  const key=k.toLowerCase().replace(/ /g,'');
+  const hasSym=!!document.getElementById(key);
+  b.innerHTML=(hasSym?I(key):'<span style="font-size:1.6rem">🔤</span>')+'<div><b>'+esc(k)+'</b><span>pomyłek: '+n+' • dotknij, aby usłyszeć</span></div>';
+  b.onclick=()=>{say(k);speak(k,null)};
+  wl.append(b);
+ });
+ const hl=$('hist'),h=(p.hist||[]).slice(-8).reverse();
+ if(!h.length)hl.innerHTML='<div><span>Tu pojawi się historia Twoich wyników.</span></div>';
+ else h.forEach(x=>{
+  const d=new Date(x.d);
+  hl.insertAdjacentHTML('beforeend','<div><span>'+esc(x.t)+'</span><span>'+esc(x.l)+' • '+d.toLocaleDateString('pl-PL')+'</span></div>');
+ });
+ $('pb1').onclick=()=>openTest('1');
+ $('pb2').onclick=()=>games();
+ $('pb3').onclick=()=>home();
+}
+
 /* ===== MENU GŁÓWNE Z ZAKŁADKAMI ===== */
 let tab=0;
-const TABS=[
- ['Klasa 1',[['📝 Test Unit 1','45 zadań w 3 poziomach',()=>openUnit(1)],['🎲 Zabawa i nauka Unit 1','Memory, Łowca słówek, Literki',()=>openUnit(1,1)],['📝 Test Unit 2','Owoce, kolory, prawda/fałsz, literki',()=>openUnit(2)],['🎲 Zabawa i nauka Unit 2','Memory, Łowca słówek, Literki',()=>openUnit(2,1)]]],
- ['Nauka i zabawa 4–6',[...MQM.map(([e,t,s,k])=>[e+' '+t,s,()=>{show('kids');mini(k)},k]),['🃏 Memory','Pary zwierząt i owoców',()=>{show('kids');kmem()}],['🚜 Fabryka maszyn','Złóż traktor lub kombajn!',farmMenu]]]
-];
-function home(){if(!DB.list.some(x=>x.id===DB.cur))return profs();show('home');
- $('home').innerHTML=`<div class="acts" style="margin:0 0 12px;align-items:center"><button class="tabb" id="who">${esc(P().e)} ${esc(P().n)} ▾</button><b>⭐ ${sumq(P())} • 🚜 ${nb(P())}</b></div><div class="q">Co dziś robimy?</div>`+'<div class="chips" id="tb"></div><div class="gm" id="tl"></div><div class="gm" style="margin-top:14px"></div>';
+function home(){
+ if(!DB.list.some(x=>x.id===DB.cur))return profs();
+ show('home');
+ const p=PP();
+ $('home').innerHTML='<div class="acts" style="margin:0 0 12px;align-items:center"><button class="tabb" id="who">'+esc(P().e)+' '+esc(P().n)+' ▾</button><b>⭐ '+(p.st||0)+' • 📚 '+wCount()+'</b></div>'+
+  '<div class="q">Co dziś robimy?</div><div class="chips" id="tb"></div><div id="tl"></div>';
  $('who').onclick=()=>profs();
- TABS.forEach(([a],i)=>$('tb').append(mkb('tabb'+(i==tab?' on':''),a,()=>{tab=i;home()})));
- TABS[tab][1].forEach(([a,b,f,k])=>$('tl').append(mkb('gc',`<b>${a}</b><span>${b}${k&&P().p['q_'+k]!=null?' • ⭐ '+P().p['q_'+k]:''}</span>`,f)));}
+ ['📚 Nauka klasa 1','🎮 Baw się i ucz','🏆 Moje postępy'].forEach((t,i)=>$('tb').append(mkb('tabb'+(i===tab?' on':''),t,()=>{tab=i;home()})));
+ const tl=$('tl');
+ if(tab===0){
+  tl.innerHTML='<div class="sub">Testy działów</div><div class="gm two" id="g1"></div><div class="sub">Powtórka i egzamin</div><div class="gm two" id="g2"></div>';
+  [['1','📝 Unit 1 – School Things'],['2','📝 Unit 2 – Fruits and Colours'],['3','📝 Unit 3 – Numbers and Toys'],['4','📝 Unit 4 – My Family'],['5','📝 Unit 5 – Animals'],['6','📝 Unit 6 – My Body']].forEach(([id,t])=>{
+   const done=p['t_'+id];
+   $('g1').append(mkb('gc','<b>'+t+'</b><span>45 zadań • 3 poziomy '+(done?'• ✓':'')+'</span>',()=>openTest(id)));
+  });
+  $('g2').append(mkb('gc','<b>🔁 Powtórka wszystkich działów</b><span>Unit 1–6 razem</span>',()=>openTest('rev')));
+  $('g2').append(mkb('gc','<b>🎓 Egzamin końcowy klasy 1</b><span>Wszystko naraz • dyplom</span>',()=>openTest('exam')));
+ }else if(tab===1){
+  tl.innerHTML='<p class="hint">Minigry, Fabryka Maszyn i przygody z angielskim. Wszystkie zapisują gwiazdki w Twoim profilu.</p><div class="gm" id="g3"></div>';
+  $('g3').append(mkb('gc','<b>🎮 Centrum gier</b><span>Mały Sklep, Robot, Farma, Skarby, Rakieta i więcej</span>',()=>games()));
+  $('g3').append(mkb('gc','<b>🚜 Fabryka Maszyn</b><span>Złóż traktor, kombajn, koparkę...</span>',()=>farmMenu()));
+  $('g3').append(mkb('gc','<b>🧼 Umyjmy maszyny</b><span>Nowy tryb: gąbka, piana, prysznic</span>',()=>gWash()));
+  $('g3').append(mkb('gc','<b>🎲 Gry Unit 1–2</b><span>Memory, Łowca słówek, Literki</span>',()=>openUnit(2,1)));
+  $('g3').append(mkb('gc','<b>🧸 Nauka i zabawa 4–6</b><span>Liczby, kolory, zwierzątka</span>',()=>kidsMenu()));
+ }else{
+  tl.innerHTML='<div class="gm" id="g4"></div>';
+  $('g4').append(mkb('gc','<b>🏆 Moje postępy</b><span>Gwiazdki, odznaki, trudne słówka</span>',()=>prog()));
+  $('g4').append(mkb('gc','<b>👧 Zmień profil</b><span>Wybierz inne dziecko</span>',()=>profs()));
+ }
+}
 window.home=home;
 if(DB.list.length==1)DB.cur=DB.list[0].id;
 DB.list.length==1?home():profs();
